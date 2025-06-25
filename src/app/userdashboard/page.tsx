@@ -9,8 +9,6 @@ export default function UserDashboard() {
     const [activeTab, setActiveTab] = useState("dashboard");
     // Section tab for tickets/matchmaking
     const [matchTab, setMatchTab] = useState('newMatch');
-    const [selectedTicket, setSelectedTicket] = useState<any>(null);
-    const closeModal = () => setSelectedTicket(null);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const router = useRouter();
     const handleLogout = () => setShowLogoutModal(true);
