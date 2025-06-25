@@ -227,7 +227,7 @@ export default function Auth() {
                                         onClick={() => setRoleType(type)}
                                     >
                                         <div className="w-12 h-12 mx-auto rounded-full border border-gray-400 mb-2 overflow-hidden">
-                                            <img src="/avatar.png" alt="avatar" className="w-full h-full object-cover" />
+                                            <Image src="/avatar.png" alt="avatar" width={48} height={48} className="w-full h-full object-cover" />
                                         </div>
                                         <p className="font-semibold text-sm mb-1">{type} {role}</p>
                                         <button

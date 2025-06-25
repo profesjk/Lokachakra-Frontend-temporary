@@ -24,7 +24,16 @@ export default function AdminDashboard() {
         status: "Pending",
         date: "02/06/2025"
     });
-    const [selectedTicket, setSelectedTicket] = useState<any>(null);
+    type Ticket = {
+        customer: string;
+        email: string;
+        query: string;
+        ticketNo: string;
+        priority: string;
+        status: string;
+        date: string;
+    };
+    const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
 
     const closeModal = () => setSelectedTicket(null);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -383,7 +392,7 @@ export default function AdminDashboard() {
                                             <div className="text-gray-700 font-serif w-full md:w-1/2">
                                                 <p className="font-bold mb-2">Problem Description:</p>
                                                 <p className="text-sm leading-relaxed">
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s...
                                                 </p>
 
                                                 <div className="flex justify-end mt-4">
