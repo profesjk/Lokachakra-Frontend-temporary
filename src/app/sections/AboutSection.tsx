@@ -35,7 +35,7 @@ const AboutSection = () => {
               developers, entrepreneurs, and organizations to co-create solutions for global
               challenges. By leveraging blockchain principles and collaborative tools, Lokachakra
               eliminates trust barriers and enables transparent, inclusive, and impactful
-              innovation at scale. Whether you're launching a project, contributing to open-source,
+              innovation at scale. Whether you&apos;re launching a project, contributing to open-source,
               or building with purpose — Lokachakra is your ecosystem for meaningful change.
             </p>
             <button className="bg-[#0066FF] text-white px-6 py-2 rounded-full font-semibold text-sm uppercase hover:bg-[#FFFFF] transition">
