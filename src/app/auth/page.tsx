@@ -740,7 +740,7 @@ export default function Auth() {
                                 </div>
                                 {/* RESEND OTP */}
                                 <div className="text-center" onClick={() => setStep(7)}>
-                                    <a href="#" className="text-sm text-gray-700 font-semibold underline">Didn't Recived OTP. Resend It</a>
+                                    <a href="#" className="text-sm text-gray-700 font-semibold underline">Did not Recived OTP. Resend It</a>
                                 </div>
 
                                 {/* Centered Sign In Button */}
