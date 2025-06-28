@@ -9,9 +9,14 @@ import Footer from '../components/Footer';
 const roles = [
     "Founder",
     "Investor",
-    "Mentor",
-    "Student",
-    "Advisor"
+    "Mentor_Research",
+    "Accelerators",
+    "Executives",
+    "Government",
+    "Legal",
+    "Cybersecurity",
+    "Freelancers",
+    "exit_planners"
 ];
 
 export default function Auth() {
@@ -95,12 +100,39 @@ export default function Auth() {
                             className="px-8 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition disabled:opacity-50"
                             disabled={!role}
                             onClick={() => {
-                                if (role === "Founder") {
-                                    setStep(11);
-                                } else if (role === "Investor") {
-                                    setStep(12);
-                                } else {
-                                    setStep(2);
+                                switch (role) {
+                                    case "Founder":
+                                        setStep(11);
+                                        break;
+                                    case "Investor":
+                                        setStep(12);
+                                        break;
+                                    case "Mentor_Research":
+                                        setStep(14);
+                                        break;
+                                    case "Accelerators":
+                                        setStep(13);
+                                        break;
+                                    case "Executives":
+                                        setStep(15);
+                                        break;
+                                    case "Government":
+                                        setStep(16);
+                                        break;
+                                    case "Legal":
+                                        setStep(17);
+                                        break;
+                                    case "Cybersecurity":
+                                        setStep(18);
+                                        break;
+                                    case "Freelancers":
+                                        setStep(19);
+                                        break;
+                                    case "exit_planners":
+                                        setStep(20);
+                                        break;
+                                    default:
+                                        setStep(2);
                                 }
                             }}
                         >
@@ -574,7 +606,7 @@ export default function Auth() {
                                 <div className="flex flex-wrap gap-4 justify-center mt-3">
                                     <button
                                         className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 bg-gray-200 font-semibold"
-                                        onClick={() => setStep(2)}
+                                        onClick={() => setStep(1)}
                                     >
                                         Sign Up
                                     </button>
@@ -1064,6 +1096,16 @@ export default function Auth() {
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
                             <div className="text-center mb-4">
                                 <h2 className="text-4xl font-semibold">INVESTORS SIGN UP</h2>
+                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
+                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                                    <button
+                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        onClick={() => setStep(6)}
+                                    >
+                                        Sign In
+                                    </button>
+                                </div>
                             </div>
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
@@ -1254,6 +1296,1336 @@ export default function Auth() {
                         </div>
                     </div>
                 )}
+
+                {step === 13 && (
+                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                        {/* Left Section */}
+                        <AuthLeftSide />
+
+                        {/* Right Section */}
+                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                            <div className="text-center mb-4">
+                                <h2 className="text-4xl font-semibold">ACCELERATOR SIGN UP</h2>
+                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
+                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                                    <button
+                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        onClick={() => setStep(6)}
+                                    >
+                                        Sign In
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
+
+                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                                {/* Accelerator Name */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Accelerator Name*</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Bryan and Sons" />
+                                </div>
+
+                                {/* Startup Types */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Types of Startups You Support*</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. AI, FinTech" />
+                                </div>
+
+                                {/* Services Offered */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Services Offered*</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Office Space, Legal, Funding" />
+                                </div>
+
+                                {/* Intake Size */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Intake Size*</label>
+                                    <input type="number" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. 36" />
+                                </div>
+
+                                {/* Batch Frequency */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Batch Frequency*</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option>Monthly</option>
+                                        <option>Quarterly</option>
+                                        <option>Bi-Annually</option>
+                                        <option>Annually</option>
+                                    </select>
+                                </div>
+
+                                {/* Program Duration */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Program Duration*</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. 6 months" />
+                                </div>
+
+                                {/* Stage Focus */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Stage Focus*</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Idea, MVP" />
+                                </div>
+
+                                {/* Equity Taken */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Do You Take Equity?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+
+                                {/* Selection Criteria */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Selection Criteria*</label>
+                                    <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Institution use act own politics." rows={2}></textarea>
+                                </div>
+
+                                {/* Rejection Criteria */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Rejection Criteria</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Outside approach ok." />
+                                </div>
+
+                                {/* Funding or Mentorship */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Primary Offering*</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option>Funding</option>
+                                        <option>Mentorship</option>
+                                        <option>Both</option>
+                                    </select>
+                                </div>
+
+                                {/* Affiliations */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Affiliations</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Govt Body, University" />
+                                </div>
+
+                                {/* Delivery Mode */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Program Delivery Mode</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option>Online</option>
+                                        <option>Offline</option>
+                                        <option>Hybrid</option>
+                                    </select>
+                                </div>
+
+                                {/* Cross Border Support */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Do You Support Cross-Border Startups?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+
+                                {/* Onboarding & Match Support */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Onboarding / Matching Support</label>
+                                    <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Particularly respond cup pretty since." rows={2}></textarea>
+                                </div>
+
+                                {/* Open to Partnerships */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Partnerships With</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Government, Experts" />
+                                </div>
+
+                                {/* Submit Button */}
+                                <div className="flex justify-center pt-2">
+                                    <button
+                                        className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900"
+                                    >
+                                        SIGN-UP
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                )}
+
+                {step === 14 && (
+                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                        {/* Left Section */}
+                        <AuthLeftSide />
+
+                        {/* Right Section */}
+                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                            <div className="text-center mb-4">
+                                <h2 className="text-4xl font-semibold">MENTOR RESEARCHER SIGN UP</h2>
+                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
+                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                                    <button
+                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        onClick={() => setStep(6)}
+                                    >
+                                        Sign In
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
+
+                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                                {/* Full Name */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Kelsey Thomas" />
+                                </div>
+
+                                {/* Primary Field */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Primary Field of Research*</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Policy" />
+                                </div>
+
+                                {/* Mentorship Open To */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Mentorship For*</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option>Individuals</option>
+                                        <option>Teams</option>
+                                        <option>Both</option>
+                                    </select>
+                                </div>
+
+                                {/* Mentorship Style Options */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Mentorship Style*</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. 1:1, Group" />
+                                </div>
+
+                                {/* Research Outputs */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Research Outputs*</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Policy Recs, Papers" />
+                                </div>
+
+                                {/* Desired Impact */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Desired Impact</label>
+                                    <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Year field little federal." rows={2}></textarea>
+                                </div>
+
+                                {/* Current Research Stage */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Current Research Stage*</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option>Idea</option>
+                                        <option>Proposal</option>
+                                        <option>Data Collection</option>
+                                        <option>Analysis</option>
+                                        <option>Publication</option>
+                                    </select>
+                                </div>
+
+                                {/* Collaborators Wanted */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Looking to Collaborate With</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Students, Peers" />
+                                </div>
+
+                                {/* Joint Project Interests */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Joint Projects for*</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Feedback, Pilots" />
+                                </div>
+
+                                {/* Tools / Datasets Used */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Tools / Datasets You Use</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. GitHub, TensorFlow" />
+                                </div>
+
+                                {/* Availability */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Availability</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option>Weekly</option>
+                                        <option>Bi-Weekly</option>
+                                        <option>Monthly</option>
+                                    </select>
+                                </div>
+
+                                {/* Preferred Communication */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Communication with Mentees</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option>Chat</option>
+                                        <option>Email</option>
+                                        <option>Video Call</option>
+                                    </select>
+                                </div>
+
+                                {/* Paid or Voluntary */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Mentorship Type*</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option>Paid</option>
+                                        <option>Voluntary</option>
+                                        <option>Both</option>
+                                    </select>
+                                </div>
+
+                                {/* Tracking Mentee Growth */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">How Do You Track Mentee Growth?</label>
+                                    <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Early choice unit." rows={2}></textarea>
+                                </div>
+
+                                {/* Network Memberships */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Networks You Are Part Of</label>
+                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. MentorNet" />
+                                </div>
+
+                                {/* Challenges as Mentor */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Challenges You've Faced as a Mentor</label>
+                                    <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Own people total within situation thousand." rows={2}></textarea>
+                                </div>
+
+                                {/* Interest in Value-Aligned Matches */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Value-Aligned Matches?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+
+                                {/* Submit Button */}
+                                <div className="flex justify-center pt-2">
+                                    <button
+                                        className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900"
+                                    >
+                                        SIGN-UP
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                )}
+
+                {step === 15 && (
+                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                        {/* Left Section */}
+                        <AuthLeftSide />
+
+                        {/* Right Section */}
+                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                            <div className="text-center mb-4">
+                                <h2 className="text-4xl font-semibold">EXECUTIVE SIGN UP</h2>
+                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
+                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                                    <button
+                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        onClick={() => setStep(6)}
+                                    >
+                                        Sign In
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
+
+                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                                {/* Full Name */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Paul Willis"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Current Role */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Current Role*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. COO"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Organization Type */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Organization Type*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. NGO, Corporation"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Key Performance Indicators (KPIs) */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Key KPIs You Track</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Retention, User Acquisition"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Finding Partners */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">What Are You Looking for in a Partner?</label>
+                                    <textarea
+                                        placeholder="e.g. Meet down term."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Strategic Priorities */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Your Strategic Priorities*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Efficiency, Innovation"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Exploring Areas */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Areas You Are Exploring</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Partnerships"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Technology Interests */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Technology Interests</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Blockchain, Cloud"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Roles You Are Seeking */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Seeking Roles / Support</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Talent, Advisors"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Investment / Mentorship Interest */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Investing, Mentorship"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Type of Firms You Prefer */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Type of Firms You Prefer</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Startups, Enterprises"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Industry Challenges */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Industry Challenges You’re Facing</label>
+                                    <textarea
+                                        placeholder="e.g. Direction every dream."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Delegatable Areas */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Areas You Want to Delegate</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Tech, Marketing"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Budget Mandate */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Budget Mandate*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. $231981"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Submit Button */}
+                                <div className="flex justify-center pt-2">
+                                    <button
+                                        className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900"
+                                    >
+                                        SIGN-UP
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                )}
+
+                {step === 16 && (
+                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                        {/* Left Section */}
+                        <AuthLeftSide />
+
+                        {/* Right Section */}
+                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                            <div className="text-center mb-4">
+                                <h2 className="text-4xl font-semibold">GOVERNMENT AUTHORITY SIGN UP</h2>
+                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
+                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                                    <button
+                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        onClick={() => setStep(6)}
+                                    >
+                                        Sign In
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
+
+                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                                {/* Department */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Department*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Grant Body"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Domains Regulated */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Domains Regulated*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Healthcare, Cybersecurity"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Organization Type */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Organization Type*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Agency, Commission"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Position Held */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Position Held*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Head"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Years Active */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Years Active in Role*</label>
+                                    <input
+                                        type="number"
+                                        placeholder="e.g. 1"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        min="0"
+                                    />
+                                </div>
+
+                                {/* Past Challenges */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Challenges You've Faced</label>
+                                    <textarea
+                                        placeholder="e.g. Kitchen later lot eye billion sort."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Interest in Innovation */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Innovation Projects?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+
+                                {/* Collaboration With */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Collaborating With</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Startups, NGOs"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Dashboards or Tools Used */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Dashboards or Tools Used</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Govt Portal"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Match with Policy/Research */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Policy/Research Matching?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+
+                                {/* Focus Area */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Primary Focus Area*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Policy-making"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Collaboration Style */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Collaboration Style</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Open Network"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Expected Start Timeline */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Expected Start Timeline</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. 1-3 months"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Impact Evaluation Preference */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Impact Evaluation Preference</label>
+                                    <textarea
+                                        placeholder="e.g. Like him child series room."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Partnership Constraints */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Partnership Constraints</label>
+                                    <textarea
+                                        placeholder="e.g. Fast technology follow."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Submit Button */}
+                                <div className="flex justify-center pt-2">
+                                    <button className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900">
+                                        SIGN-UP
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                )}
+
+                {step === 17 && (
+                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                        {/* Left Section */}
+                        <AuthLeftSide />
+
+                        {/* Right Section */}
+                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                            <div className="text-center mb-4">
+                                <h2 className="text-4xl font-semibold">LEGAL SIGN UP</h2>
+                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
+                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                                    <button
+                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        onClick={() => setStep(6)}
+                                    >
+                                        Sign In
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
+
+                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                                {/* Full Name */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Cheryl Herrera"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Current Role */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Current Role*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Auditor"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Specialization */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Specializations*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Crypto Compliance, IP"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Tools Used */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Tools You Use</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Custom ERP, LexisNexis"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Looking to Offer */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Looking to Offer*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Collaboration"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Startup Advisory Experience */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Have Startup Advisory Experience?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+
+                                {/* Industry Sectors */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Industry Sectors*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Tech, Health"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Engagement Mode */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Engagement Mode*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Retainer"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Mentorship Availability */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Available for Mentorship?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+
+                                {/* Common Legal Challenges */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Common Legal Challenges You See</label>
+                                    <textarea
+                                        placeholder="e.g. Happen range feel baby yes."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Update Channels */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Update Channels</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Webinars, Newsletters"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Client Types */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Types of Clients Served</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Corporates, Startups"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Privacy Concerns */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Privacy Concerns or Limitations</label>
+                                    <textarea
+                                        placeholder="e.g. Manager popular candidate because peace."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Submit Button */}
+                                <div className="flex justify-center pt-2">
+                                    <button className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900">
+                                        SIGN-UP
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                )}
+
+                {step === 18 && (
+                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                        {/* Left Section */}
+                        <AuthLeftSide />
+
+                        {/* Right Section */}
+                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                            <div className="text-center mb-4">
+                                <h2 className="text-4xl font-semibold">CYBERSECURITY SIGN UP</h2>
+                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
+                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                                    <button
+                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        onClick={() => setStep(6)}
+                                    >
+                                        Sign In
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
+
+                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                                {/* Full Name */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. John Knight"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Specialization Areas */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Specialization Areas*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. DevOps, Security Audits"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Domain */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Domain*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Cloud"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Gig Preference */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Gig Preference*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Long-term Strategy"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Objectives */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Objectives*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Learn, Share Expertise"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Tools/Frameworks */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Tools / Frameworks*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Nmap, Metasploit"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Preferred Update Method */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Update Method</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Conferences"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Need Access to Logs */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Require Log Access?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+
+                                {/* Interested in Mentorship */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Mentorship?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+
+                                {/* Certifications */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Certifications</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. AWS Sec, OSCP"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Team Preference */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Team Preference*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Team-based"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Partnership Type */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Partnership Type</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Informal"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Biggest Challenge */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Biggest Challenge</label>
+                                    <textarea
+                                        placeholder="e.g. Access control"
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Submit Button */}
+                                <div className="flex justify-center pt-2">
+                                    <button className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900">
+                                        SIGN-UP
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                )}
+
+                {step === 19 && (
+                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                        {/* Left Section */}
+                        <AuthLeftSide />
+
+                        {/* Right Section */}
+                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                            <div className="text-center mb-4">
+                                <h2 className="text-4xl font-semibold">FREELANCER SIGN UP</h2>
+                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
+                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                                    <button
+                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        onClick={() => setStep(6)}
+                                    >
+                                        Sign In
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
+
+                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                                {/* Full Name */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Carol Curry"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Expertise Area */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Expertise Area*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Writing"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Preferred Clients */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Client Types*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Startups, Government"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Work Mode */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Work Mode*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Part-time"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Experience Level */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Experience Level*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Junior"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Project Timeline */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Project Timeline*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Ongoing"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Finding Platforms */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Freelancing Platforms Used*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Upwork, Lokachakra"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Communication Style */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Communication Style</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Regular Syncs"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Team Work Preference */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Team Work Preference*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Team"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Open to Crypto Gigs */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Crypto Gigs?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+                                    </select>
+                                </div>
+
+                                {/* Verification Preference */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Verification Preference</label>
+                                    <textarea
+                                        placeholder="e.g. Strategy from."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Submit Button */}
+                                <div className="flex justify-center pt-2">
+                                    <button className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900">
+                                        SIGN-UP
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                )}
+
+                {step === 20 && (
+                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                        {/* Left Section */}
+                        <AuthLeftSide />
+
+                        {/* Right Section */}
+                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                            <div className="text-center mb-4">
+                                <h2 className="text-4xl font-semibold">EXIT PLANNER SIGN UP</h2>
+                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
+                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                                    <button
+                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        onClick={() => setStep(6)}
+                                    >
+                                        Sign In
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
+
+                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                                {/* Full Name */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Natasha Brewer"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Focus Side */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Focus Side*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Buy-side"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Deal Size Range */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Deal Size Range (USD)*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. 233782 - 2370685"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Team Structure */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Team Structure*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Independent"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Support Needed */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Support Needed*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Business Dev, Valuation"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Transaction Type */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Transaction Type*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Immediate, Pipeline"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Operating Sectors */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Operating Sectors*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Health, Manufacturing"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Red Flags */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Red Flags</label>
+                                    <textarea
+                                        placeholder="e.g. Leave six me short."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Readiness Validation */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Readiness Validation</label>
+                                    <textarea
+                                        placeholder="e.g. Hope sign study customer onto."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Discovery Preference */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Deal Discovery Preference*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Inbound"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Tools Used */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Tools You Use*</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. CapIQ, Pitchbook"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Partnered Work */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Work in Partnership?</label>
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+
+                                {/* Deal Frequency */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Deal Frequency</label>
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Quarterly"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    />
+                                </div>
+
+                                {/* Lokachakra Support */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Support Expected from Lokachakra</label>
+                                    <textarea
+                                        placeholder="e.g. Pattern difficult become music cup."
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
+                                </div>
+
+                                {/* Submit Button */}
+                                <div className="flex justify-center pt-2">
+                                    <button className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900">
+                                        SIGN-UP
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                )}
+
 
 
             </div>
