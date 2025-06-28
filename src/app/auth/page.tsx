@@ -50,7 +50,7 @@ export default function Auth() {
                 {/* Description */}
                 <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
                 <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
                 </p>
             </div>
 
@@ -1590,7 +1590,7 @@ export default function Auth() {
 
                                 {/* Challenges as Mentor */}
                                 <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Challenges You've Faced as a Mentor</label>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Challenges You&apos;ve Faced as a Mentor</label>
                                     <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Own people total within situation thousand." rows={2}></textarea>
                                 </div>
 
@@ -1872,7 +1872,7 @@ export default function Auth() {
 
                                 {/* Past Challenges */}
                                 <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Challenges You've Faced</label>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Challenges You&apos;ve Faced</label>
                                     <textarea
                                         placeholder="e.g. Kitchen later lot eye billion sort."
                                         rows={2}
