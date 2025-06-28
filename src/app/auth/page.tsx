@@ -33,26 +33,28 @@ export default function Auth() {
     // Common Left Side Component
     function AuthLeftSide() {
         return (
-            <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen">
+            <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                 {/* Logo */}
                 <div className="flex items-center w-full mb-8">
                     <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
-                    <span className="ml-2 text-lg font-semibold text-gray-700">Lokachakra</span>
+                    <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
                 </div>
 
                 {/* Image Placeholder */}
                 <div className="flex-grow flex items-center justify-center my-8">
-                    <div className="w-72 h-72 sm:w-80 sm:h-80 border border-gray-400 rounded-md flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Image Placeholder</span>
+                    <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white text-blue-400 text-sm">
+                        Image Placeholder
                     </div>
                 </div>
 
                 {/* Description */}
-                <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-gray-700">LOREM IPSUM IS TEXT</h2>
-                <p className="text-sm sm:text-base text-center text-gray-600 max-w-md mt-3 px-4">
-                    Lorem Ipsum is simply dummy text of the printing typesetting is Lorem Ipsum is simply dummy text of the printing typesetting is Lorem Ipsum is simply dummy text of the printing typesetting is
+                <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
                 </p>
             </div>
+
+
         );
     }
 
