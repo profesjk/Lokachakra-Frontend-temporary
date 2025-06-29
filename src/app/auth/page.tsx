@@ -43,8 +43,14 @@ export default function Auth() {
 
                 {/* Image Placeholder */}
                 <div className="flex-grow flex items-center justify-center my-8">
-                    <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white text-blue-400 text-sm">
-                        Image Placeholder
+                    <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                        <Image
+                            src="/founder.png" // Ensure the image is placed in the public folder
+                            alt="Founder"
+                            width={320}
+                            height={320}
+                            className="object-cover w-full h-full"
+                        />
                     </div>
                 </div>
 
@@ -90,9 +96,7 @@ export default function Auth() {
                                     {/* Label & Description */}
                                     <div className="text-center">
                                         <div className="text-base uppercase tracking-wide">{r}</div>
-                                        <p className="text-sm text-gray-500 mt-1 max-w-[150px] leading-snug">
-                                            Lorem Ipsum is simply dummy text of the printing typesetting is
-                                        </p>
+
                                     </div>
                                 </div>
                             ))}
@@ -104,31 +108,31 @@ export default function Auth() {
                             disabled={!role}
                             onClick={() => {
                                 switch (role) {
-                                    case "Founder":
+                                    case "founder":
                                         setStep(11);
                                         break;
-                                    case "Investor":
+                                    case "investor":
                                         setStep(12);
                                         break;
-                                    case "Mentor_Research":
+                                    case "mentor_research":
                                         setStep(14);
                                         break;
-                                    case "Accelerators":
+                                    case "accelerators":
                                         setStep(13);
                                         break;
-                                    case "Executives":
+                                    case "executives":
                                         setStep(15);
                                         break;
-                                    case "Government":
+                                    case "government":
                                         setStep(16);
                                         break;
-                                    case "Legal":
+                                    case "legal":
                                         setStep(17);
                                         break;
-                                    case "Cybersecurity":
+                                    case "cybersecurity":
                                         setStep(18);
                                         break;
-                                    case "Freelancers":
+                                    case "freelancers":
                                         setStep(19);
                                         break;
                                     case "exit_planners":
@@ -945,7 +949,32 @@ export default function Auth() {
                 {step === 11 && (
                     <div className="w-full min-h-screen pt-[0px] pb-0 flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <AuthLeftSide />
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                            {/* Logo */}
+                            <div className="flex items-center w-full mb-8">
+                                <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/founder.png" // Ensure the image is placed in the public folder
+                                        alt="Founder"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
 
                         {/* Right Section */}
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8 bg-white">
@@ -1097,7 +1126,32 @@ export default function Auth() {
                 {step === 12 && (
                     <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <AuthLeftSide />
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                            {/* Logo */}
+                            <div className="flex items-center w-full mb-8">
+                                <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/investor.png" // Ensure the image is placed in the public folder
+                                        alt="Investor"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
 
                         {/* Right Section */}
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
@@ -1307,7 +1361,32 @@ export default function Auth() {
                 {step === 13 && (
                     <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <AuthLeftSide />
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                            {/* Logo */}
+                            <div className="flex items-center w-full mb-8">
+                                <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/accelerator.png" // Ensure the image is placed in the public folder
+                                        alt="Accelerator"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
 
                         {/* Right Section */}
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
@@ -1460,7 +1539,32 @@ export default function Auth() {
                 {step === 14 && (
                     <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <AuthLeftSide />
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                            {/* Logo */}
+                            <div className="flex items-center w-full mb-8">
+                                <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/mentor_research.png" // Ensure the image is placed in the public folder
+                                        alt="Mentor Research"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
 
                         {/* Right Section */}
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
@@ -1625,7 +1729,32 @@ export default function Auth() {
                 {step === 15 && (
                     <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <AuthLeftSide />
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                            {/* Logo */}
+                            <div className="flex items-center w-full mb-8">
+                                <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/executive.png" // Ensure the image is placed in the public folder
+                                        alt="Executive"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
 
                         {/* Right Section */}
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
@@ -1803,7 +1932,32 @@ export default function Auth() {
                 {step === 16 && (
                     <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <AuthLeftSide />
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                            {/* Logo */}
+                            <div className="flex items-center w-full mb-8">
+                                <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/government.png" // Ensure the image is placed in the public folder
+                                        alt="Government"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
 
                         {/* Right Section */}
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
@@ -1988,7 +2142,32 @@ export default function Auth() {
                 {step === 17 && (
                     <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <AuthLeftSide />
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                            {/* Logo */}
+                            <div className="flex items-center w-full mb-8">
+                                <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/legal.png" // Ensure the image is placed in the public folder
+                                        alt="Legal"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
 
                         {/* Right Section */}
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
@@ -2152,7 +2331,32 @@ export default function Auth() {
                 {step === 18 && (
                     <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <AuthLeftSide />
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                            {/* Logo */}
+                            <div className="flex items-center w-full mb-8">
+                                <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/cybersecurity.png" // Ensure the image is placed in the public folder
+                                        alt="Cybersecurity"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
 
                         {/* Right Section */}
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
@@ -2316,7 +2520,32 @@ export default function Auth() {
                 {step === 19 && (
                     <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <AuthLeftSide />
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                            {/* Logo */}
+                            <div className="flex items-center w-full mb-8">
+                                <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/freelancers.png" // Ensure the image is placed in the public folder
+                                        alt="Freelancer"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
 
                         {/* Right Section */}
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
@@ -2336,7 +2565,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                            <div className="space-y-2 w-full max-w-xl mx-auto">
                                 {/* Full Name */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
@@ -2461,7 +2690,32 @@ export default function Auth() {
                 {step === 20 && (
                     <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <AuthLeftSide />
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                            {/* Logo */}
+                            <div className="flex items-center w-full mb-8">
+                                <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/exit_planner.png" // Ensure the image is placed in the public folder
+                                        alt="Exit Planner"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
 
                         {/* Right Section */}
                         <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
