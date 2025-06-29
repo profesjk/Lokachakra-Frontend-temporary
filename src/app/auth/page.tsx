@@ -637,7 +637,7 @@ export default function Auth() {
                                 Welcome Back to Lokachakra
                             </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Continue your journey with the community that's shaping the future of innovation. Access powerful tools, connect with changemakers, and keep building what matters. We're glad to have you back.
+                                Continue your journey with the community that&apos;s shaping the future of innovation. Access powerful tools, connect with changemakers, and keep building what matters. We&apos;re glad to have you back.
                             </p>
                         </div>
 
