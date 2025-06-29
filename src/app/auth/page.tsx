@@ -994,7 +994,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                            <div className="space-y-2 w-full max-w-xl mx-auto">
                                 {/* Startup Details Form Section */}
                                 <div>
                                     <h2 className="text-lg font-semibold text-gray-800 mb-4">Startup Details</h2>
@@ -1171,7 +1171,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                            <div className="space-y-2 w-full max-w-xl mx-auto">
                                 {/* Name */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
@@ -1406,7 +1406,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                            <div className="space-y-2 w-full max-w-xl mx-auto">
                                 {/* Accelerator Name */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Accelerator Name*</label>
@@ -1584,7 +1584,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                            <div className="space-y-2 w-full max-w-xl mx-auto">
                                 {/* Full Name */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
@@ -1774,7 +1774,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                            <div className="space-y-2 w-full max-w-xl mx-auto">
                                 {/* Full Name */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
@@ -1977,7 +1977,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                            <div className="space-y-2 w-full max-w-xl mx-auto">
                                 {/* Department */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Department*</label>
@@ -2187,7 +2187,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                            <div className="space-y-2 w-full max-w-xl mx-auto">
                                 {/* Full Name */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
@@ -2376,7 +2376,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                            <div className="space-y-2 w-full max-w-xl mx-auto">
                                 {/* Full Name */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
@@ -2735,7 +2735,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-8 w-full max-w-xl mx-auto">
+                            <div className="space-y-2 w-full max-w-xl mx-auto">
                                 {/* Full Name */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
