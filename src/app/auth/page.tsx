@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import ChatBot from '../sections/ChatBot';
+import Link from 'next/link';
 
 
 const roles = [
@@ -607,7 +608,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -616,7 +617,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
@@ -984,7 +985,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -993,7 +994,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
@@ -1170,7 +1171,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -1179,7 +1180,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
@@ -1414,7 +1415,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -1423,7 +1424,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
@@ -1601,7 +1602,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -1610,7 +1611,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
@@ -1800,7 +1801,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -1809,7 +1810,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
@@ -2013,7 +2014,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -2022,7 +2023,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
@@ -2232,7 +2233,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -2241,7 +2242,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
@@ -2430,7 +2431,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -2439,7 +2440,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
@@ -2628,7 +2629,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -2637,7 +2638,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
@@ -2807,7 +2808,7 @@ export default function Auth() {
                         {/* Left Section */}
                         <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
                             {/* Logo */}
-                            <a href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
                                     src="/lokachakra-logo.png"
                                     alt="Lokachakra"
@@ -2816,7 +2817,7 @@ export default function Auth() {
                                     priority
                                 />
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                            </a>
+                            </Link>
 
                             {/* Image Placeholder */}
                             <div className="flex-grow flex items-center justify-center my-8">
