@@ -5,8 +5,7 @@ import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import ChatBot from '../sections/ChatBot';
 import Footer from '../components/Footer';
-import PrivacyPolicy from '../privacy-policy/page';
-import TermsAndConditions from '../tnc/page';
+
 
 const roles = [
     "Founder",
