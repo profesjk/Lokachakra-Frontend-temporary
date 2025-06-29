@@ -78,7 +78,7 @@ export default function Auth() {
                                     {/* Profile image */}
                                     <div className="relative flex flex-col items-center">
                                         <div className="w-28 h-28 rounded-full border-[6px] border-gray-200 flex items-center justify-center bg-gray-100">
-                                            <Image src="/avatar.png" alt={r} width={64} height={64} className="rounded-full" />
+                                            <Image src={/${r}.png} alt={r} width={64} height={64} className="rounded-full" />
                                         </div>
 
                                         {/* Vertical Line + Dot */}
