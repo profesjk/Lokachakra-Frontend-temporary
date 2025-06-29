@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import ChatBot from '../sections/ChatBot';
 import Footer from '../components/Footer';
+import PrivacyPolicy from '../privacy-policy/page';
+import TermsAndConditions from '../tnc/page';
 
 const roles = [
     "Founder",
@@ -78,7 +80,7 @@ export default function Auth() {
                                     {/* Profile image */}
                                     <div className="relative flex flex-col items-center">
                                         <div className="w-28 h-28 rounded-full border-[6px] border-gray-200 flex items-center justify-center bg-gray-100">
-                                            <Image src={/${r}.png} alt={r} width={64} height={64} className="rounded-full" />
+                                            <Image src={`/${r}.png`} alt={r} width={104} height={104} className="rounded-full" />
                                         </div>
 
                                         {/* Vertical Line + Dot */}
@@ -99,7 +101,7 @@ export default function Auth() {
 
                         {/* Continue Button */}
                         <button
-                            className="px-8 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition disabled:opacity-50"
+                            className="px-7 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition disabled:opacity-50"
                             disabled={!role}
                             onClick={() => {
                                 switch (role) {
