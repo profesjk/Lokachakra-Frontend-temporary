@@ -8,15 +8,15 @@ import Footer from '../components/Footer';
 
 
 const roles = [
-    "Founder",
-    "Investor",
-    "Mentor_Research",
-    "Accelerators",
-    "Executives",
-    "Government",
-    "Legal",
-    "Cybersecurity",
-    "Freelancers",
+    "founder",
+    "investor",
+    "mentor_research",
+    "accelerators",
+    "executives",
+    "government",
+    "legal",
+    "cybersecurity",
+    "freelancers",
     "exit_planners"
 ];
 
