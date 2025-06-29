@@ -144,8 +144,12 @@ export default function Auth() {
                         </button>
 
                         <p className="text-sm text-gray-600 mt-4 text-center">
-                            YOU AGREE TO OUR <span className="underline cursor-pointer">PRIVACY POLICY</span> &{' '}
-                            <span className="underline cursor-pointer">TERMS & CONDITION</span>
+                            YOU AGREE TO OUR{' '}
+                            <a href="/privacy-policy" className="underline cursor-pointer">PRIVACY POLICY</a>{' '}
+                            &{' '}
+                            <a href="/tnc">
+                                <span className="underline cursor-pointer">TERMS & CONDITION</span>
+                            </a>
                         </p>
                     </div>
                 )}
