@@ -104,7 +104,7 @@ export default function Auth() {
 
                         {/* Continue Button */}
                         <button
-                            className="px-7 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition disabled:opacity-50"
+                            className="px-7 py-2 bg-[#0066FF] text-white rounded-full hover:bg-white hover:text-[#0066FF] border-2 border-[#0066FF] transition disabled:opacity-50"
                             disabled={!role}
                             onClick={() => {
                                 switch (role) {
@@ -970,10 +970,13 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Join as a Founder
+                            </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                                Be part of an exclusive network of visionaries building the future. Sign up to share your startup, connect with investors, and access powerful tools to accelerate your journey.
                             </p>
+
                         </div>
 
                         {/* Right Section */}
@@ -1147,10 +1150,13 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Join as an Investor
+                            </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                                Discover promising startups and connect directly with passionate founders. Sign up to explore investment opportunities and support the next wave of innovation.
                             </p>
+
                         </div>
 
                         {/* Right Section */}
@@ -1382,10 +1388,13 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Join as an Accelerator
+                            </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                                Connect with high-potential startups and offer them the mentorship, resources, and support they need to grow. Sign up to discover founders ready to scale and make an impact.
                             </p>
+
                         </div>
 
                         {/* Right Section */}
@@ -1560,10 +1569,13 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Join as a Mentor / Research Expert
+                            </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                                Share your expertise to guide emerging startups or contribute valuable insights through research. Sign up to mentor passionate founders and help shape the future of innovation.
                             </p>
+
                         </div>
 
                         {/* Right Section */}
@@ -1750,10 +1762,14 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Join as an Executive
+                            </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                                Connect with high-growth startups seeking experienced leadership. Sign up to explore strategic roles, contribute to impactful ventures, and drive meaningful change.
                             </p>
+
                         </div>
 
                         {/* Right Section */}
@@ -1953,10 +1969,13 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Join as a Government Authority
+                            </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                                Collaborate with startups and innovation ecosystems to drive policy, funding, and national development. Sign up to support emerging ventures and enable impactful public-private partnerships.
                             </p>
+
                         </div>
 
                         {/* Right Section */}
@@ -2163,10 +2182,13 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Join as a Legal Expert
+                            </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                                Support startups with legal guidance, compliance, and intellectual property protection. Sign up to offer your legal expertise and help ventures build on a strong foundation.
                             </p>
+
                         </div>
 
                         {/* Right Section */}
@@ -2352,10 +2374,13 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Join as a Cybersecurity Expert
+                            </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                                Protect startups from digital threats by offering security assessments, risk management, and compliance solutions. Sign up to help founders build safe and resilient digital products.
                             </p>
+
                         </div>
 
                         {/* Right Section */}
@@ -2541,10 +2566,13 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Join as a Freelancer
+                            </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                                Work with innovative startups on exciting projects across design, development, content, marketing, and more. Sign up to find meaningful freelance opportunities and grow your portfolio.
                             </p>
+
                         </div>
 
                         {/* Right Section */}
@@ -2711,10 +2739,13 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Join as an Exit Planner
+                            </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                                Help founders prepare for successful exits through strategic planning, M&A support, and valuation insights. Sign up to guide startups through smooth and rewarding transitions.
                             </p>
+
                         </div>
 
                         {/* Right Section */}
