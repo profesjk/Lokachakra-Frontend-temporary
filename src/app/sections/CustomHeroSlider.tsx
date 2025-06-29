@@ -35,7 +35,7 @@ const CustomHeroSlider = () => {
 
   return (
     <section
-      className="py-20 bg-cover bg-center text-white"
+      className="py-20 bg-cover bg-center text-white mt-15"
       style={{ backgroundImage: "url('/banner.png')" }}
     >
       <div className="max-w-7xl mx-auto px-4">
