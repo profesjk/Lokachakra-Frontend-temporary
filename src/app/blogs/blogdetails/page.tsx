@@ -86,8 +86,7 @@ export default function BlogDetails() {
           <div className="space-y-5 text-sm md:text-base text-gray-700 leading-relaxed">
             {[1, 2, 3].map((para) => (
               <p key={para}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Ipsum has been the
-                industry's standard dummy text ever since the Lorem Ipsum is simply dummy text of the printing
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Ipsum has been the industry&apos;s standard dummy text ever since the Lorem Ipsum is simply dummy text of the printing
                 and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa est eveniet enim, asperiores sapiente ipsam nemo animi a eligendi modi ipsum voluptatem aliquid odit neque voluptate. A libero alias fugiat?
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit eius tenetur aspernatur architecto corporis fuga deserunt impedit magni illum, expedita suscipit. Quod placeat recusandae fugit quae adipisci molestias! Reprehenderit, nulla.

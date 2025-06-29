@@ -101,7 +101,7 @@ const Navbar = () => {
               <button
                 type="button"
                 className="bg-[#0066FF] text-white px-5 py-2 rounded-full text-sm font-medium border-2 border-[#0066FF] transition-all duration-200 hover:bg-white hover:text-[#0066FF]"
-                onClick={() => handleAuth(6)}
+                onClick={() => handleAuth(1)}
               >
                 Sign In
               </button>

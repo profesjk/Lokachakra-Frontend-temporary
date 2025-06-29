@@ -9,8 +9,6 @@ export default function UserDashboard() {
     const [activeTab, setActiveTab] = useState("dashboard");
     // Section tab for tickets/matchmaking
     const [matchTab, setMatchTab] = useState('newMatch');
-    const [selectedTicket, setSelectedTicket] = useState<any>(null);
-    const closeModal = () => setSelectedTicket(null);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const router = useRouter();
     const handleLogout = () => setShowLogoutModal(true);
@@ -138,17 +136,6 @@ export default function UserDashboard() {
         email: 'yadavkaran12@gmail.com',
         experience: '03 Years Experience',
         match: '0%',
-    });
-
-    // Dummy tickets for my tickets
-    const tickets = Array(3).fill({
-        id: '#Loki5',
-        queryName: 'Smart contract error',
-        assignee: 'Pratham Chaudhary',
-        status: 'In Progress',
-        priority: 'High',
-        completionDate: 'Thu, 05 May, 2025',
-        createdAt: 'Mon, 02 May, 2025 - 02:30PM',
     });
 
     // Ensure only one filter dropdown is open at a time
@@ -567,7 +554,7 @@ export default function UserDashboard() {
                                                     <div className="text-sm text-gray-600 leading-relaxed mb-4">
                                                         <span className="font-bold text-black block mb-1">Description :</span>
                                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                                                        been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy
+                                                        been the industry&apos;s standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy
                                                         text of the printing and typesetting industry ever since the 1500s, Lorem Ipsum is simply
                                                         dummy text of the printing and typesetting industry ever since the 1500.
                                                         <span className="text-black font-semibold ml-1">READ MORE</span>
@@ -889,7 +876,7 @@ export default function UserDashboard() {
                                                             {employees.map((emp, index) => (
                                                                 <div key={index} className="bg-white shadow-md rounded-xl p-4 text-center relative">
                                                                     <input type="checkbox" className="absolute top-4 right-4" />
-                                                                    <img src="/avatar.png" alt="profile" className="w-16 h-16 mx-auto rounded-full" />
+                                                                    <Image src="/avatar.png" alt="profile" width={64} height={64} className="w-16 h-16 mx-auto rounded-full" />
                                                                     <h3 className="font-bold text-lg mt-2">{emp.name}</h3>
                                                                     <p className="text-gray-500 text-sm">{emp.position}</p>
                                                                     <p className="text-gray-500 text-sm">{emp.email}</p>

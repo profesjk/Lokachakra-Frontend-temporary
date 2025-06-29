@@ -61,7 +61,7 @@ const PricingSection = () => {
             <h3 className="text-xl font-semibold mb-4 uppercase">{plan.title}</h3>
             <p className="text-5xl font-bold mb-6">${plan.price}</p>
             <ul className="space-y-2 mb-6 text-gray-800">
-              {plan.services.map((service, i) => (
+              {plan.services.map((service) => (
                 <li key={service} className="capitalize">
                   {service}
                 </li>

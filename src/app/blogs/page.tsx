@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar';
 const blogData = Array(6).fill({
     title: 'Lorem Ipsum is simply dummy text Sure wait for the and',
     description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Ipsum has been the industry\'s standard dummy text ever since the...',
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Ipsum has been the industry&apos;s standard dummy text ever since the...',
     author: 'Author Name',
     date: '22/05/2025',
     image: '/about-image.png',
@@ -39,7 +39,7 @@ export default function Blogs() {
                     </h2>
                     <p className="text-gray-700 text-base md:text-lg leading-relaxed tracking-wide font-medium mb-10">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,
                     </p>
                     <button className="bg-gray-700 text-white text-lg px-6 py-2 rounded-full hover:bg-gray-800 transition">
                         Get Started
