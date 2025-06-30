@@ -62,19 +62,20 @@ const Navbar = () => {
           <div className="hidden md:flex space-x-4">
             <button
               type="button"
-              className="bg-[#0066FF] text-white px-5 py-2 rounded-full text-sm font-medium border-2 border-[#0066FF] transition-all duration-200 hover:bg-white hover:text-[#0066FF]"
+              className="bg-white text-[#0066FF] px-5 py-2 rounded-full text-sm font-medium border-2 border-[#0066FF] transition-all duration-200 hover:bg-[#0066FF] hover:text-white"
               onClick={() => handleAuth(6)}
             >
               Sign In
             </button>
             <button
               type="button"
-              className="bg-[#0066FF] text-white px-5 py-2 rounded-full text-sm font-medium border-2 border-[#0066FF] transition-all duration-200 hover:bg-white hover:text-[#0066FF]"
+              className="bg-white text-[#0066FF] px-5 py-2 rounded-full text-sm font-medium border-2 border-[#0066FF] transition-all duration-200 hover:bg-[#0066FF] hover:text-white"
               onClick={() => handleAuth(1)}
             >
               Sign Up
             </button>
           </div>
+
 
           {/* Hamburger */}
           <div className="md:hidden">

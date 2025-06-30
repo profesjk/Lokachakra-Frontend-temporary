@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
   return (
     <>
     <Navbar />
-      <section className="bg-gray-100 text-center py-20 px-4">
+      <section className="bg-gray-100 text-center py-20 px-4 mt-15">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-serif font-medium text-gray-800 mb-6">
             Privacy Policy
