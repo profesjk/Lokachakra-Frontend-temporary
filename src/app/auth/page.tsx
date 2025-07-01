@@ -1395,7 +1395,7 @@ export default function Auth() {
                             <div className="flex-grow flex items-center justify-center my-8">
                                 <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
                                     <Image
-                                        src="/accelerator.png" // Ensure the image is placed in the public folder
+                                        src="/accelerators.png" // Ensure the image is placed in the public folder
                                         alt="Accelerator"
                                         width={320}
                                         height={320}
@@ -1781,7 +1781,7 @@ export default function Auth() {
                             <div className="flex-grow flex items-center justify-center my-8">
                                 <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
                                     <Image
-                                        src="/executive.png" // Ensure the image is placed in the public folder
+                                        src="/executives.png" // Ensure the image is placed in the public folder
                                         alt="Executive"
                                         width={320}
                                         height={320}
@@ -2788,7 +2788,7 @@ export default function Auth() {
                             <div className="flex-grow flex items-center justify-center my-8">
                                 <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
                                     <Image
-                                        src="/exit_planner.png" // Ensure the image is placed in the public folder
+                                        src="/exit_planners.png" // Ensure the image is placed in the public folder
                                         alt="Exit Planner"
                                         width={320}
                                         height={320}

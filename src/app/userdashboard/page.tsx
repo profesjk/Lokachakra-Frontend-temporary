@@ -294,7 +294,7 @@ export default function UserDashboard() {
                         {activeTab === "dashboard" && (
                             <>
                                 {/* Header Cards */}
-                                <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+                                <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6 mt-15">
                                     {[...Array(5)].map((_, idx) => (
                                         <div
                                             key={idx}
@@ -370,7 +370,7 @@ export default function UserDashboard() {
                         {/* TICKETS */}
                         {activeTab === "tickets" && (
                             <>
-                                <div className="p-6 rounded-lg bg-gray-100">
+                                <div className="p-6 rounded-lg bg-gray-100 mt-5">
                                     {/* Tabs */}
                                     <div className="flex gap-4 mb-6 font-serif text-lg font-semibold">
                                         <button
@@ -613,7 +613,7 @@ export default function UserDashboard() {
                         {activeTab === "matchmaking" && (
                             <>
                                 {/* Match Making Filters Panel */}
-                                <div className="p-6 rounded-lg bg-gray-100">
+                                <div className="p-6 rounded-lg bg-gray-100 mt-5">
                                     {/* Tabs */}
                                     <div className="flex gap-4 mb-6 font-serif text-lg font-semibold">
                                         <button
