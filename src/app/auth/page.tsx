@@ -992,9 +992,9 @@ export default function Auth() {
                 )}
 
                 {step === 11 && (
-                    <div className="w-full min-h-screen pt-[0px] pb-0 flex flex-col md:flex-row bg-white">
+                    <div className="w-full h-screen flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 h-screen fixed top-0 left-0 shadow-md">
                             {/* Logo */}
                             <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
@@ -1007,11 +1007,11 @@ export default function Auth() {
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
                             </Link>
 
-                            {/* Image Placeholder */}
+                            {/* Image */}
                             <div className="flex-grow flex items-center justify-center my-8">
                                 <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
                                     <Image
-                                        src="/founder.png" // Ensure the image is placed in the public folder
+                                        src="/founder.png" // Ensure this image is in /public folder
                                         alt="Founder"
                                         width={320}
                                         height={320}
@@ -1027,14 +1027,13 @@ export default function Auth() {
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
                                 Be part of an exclusive network of visionaries building the future. Sign up to share your startup, connect with investors, and access powerful tools to accelerate your journey.
                             </p>
-
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8 bg-white rounded-xl shadow-md">
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
                             {/* Title & Actions */}
                             <div className="text-center mb-4">
-                                <h2 className="text-4xl font-bold text-blue-800">Founders Sign-Up</h2>
+                                <h2 className="text-4xl font-bold text-[#0066FF]">Founders Sign-Up</h2>
                                 <p className="text-sm text-gray-600">Already have an account? Hit the Sign In button</p>
                                 <div className="flex gap-4 justify-center mt-3 flex-wrap">
                                     <button className="px-6 py-2 rounded-full bg-[#0066FF] text-white text-sm hover:bg-blue-700 transition">Sign Up</button>
@@ -1049,7 +1048,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            {/* Form Section */}
+                            {/* Form */}
                             <div className="space-y-6 w-full max-w-3xl mx-auto">
                                 <h2 className="text-lg font-semibold text-blue-800 mb-2">Startup Details</h2>
 
@@ -1057,11 +1056,19 @@ export default function Auth() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Your Name*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="Enter your full name" />
+                                        <input
+                                            type="text"
+                                            placeholder="Enter your full name"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Your Role*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Founder" />
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Founder"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
                                     </div>
                                 </div>
 
@@ -1069,7 +1076,11 @@ export default function Auth() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Startup Name*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. AIgenix" />
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. ChainMed Solutions"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Startup Stage*</label>
@@ -1087,33 +1098,53 @@ export default function Auth() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Domain(s)*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. HealthTech, Blockchain" />
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. HealthTech, Blockchain"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Biggest Challenge*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Market Access" />
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Market Access"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
                                     </div>
                                 </div>
 
-                                {/* Row 4: Collaborators + Seeking */}
+                                {/* Row 4: Collaborators Needed + Currently Seeking */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Collaborators Needed*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Investors, Technical Experts" />
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Investors, Technical Experts"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Currently Seeking*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Investments" />
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Investments"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
                                     </div>
                                 </div>
 
                                 {/* Growth Goals */}
                                 <div>
                                     <label className="block text-sm font-semibold text-gray-700 mb-1">12-Month Growth Goals*</label>
-                                    <textarea rows={3} className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Enter 3 new regional markets and hire sales team."></textarea>
+                                    <textarea
+                                        rows={3}
+                                        placeholder="e.g. Enter 3 new regional markets and hire sales team."
+                                        className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
                                 </div>
 
-                                {/* Row 5: Interested in Accelerator + Product Type */}
+                                {/* Row 5: Interested in Accelerator + Preferred Model */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Interested in Accelerator?</label>
@@ -1123,24 +1154,76 @@ export default function Auth() {
                                         </select>
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Product Type*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Marketplace" />
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Preferred Model*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Revenue-share"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
                                     </div>
                                 </div>
 
-                                {/* Row 6: Hiring Needs + Previous Support Used */}
+                                {/* Row 6: Tech Stack + Hiring Needs */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Hiring Needs*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Backend, Frontend" />
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Tech Stack*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Node.js, React"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Previous Support Used*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Incubator" />
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Hiring Needs*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Backend, Frontend"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
                                     </div>
                                 </div>
 
-                                {/* Row 7: Co-Founder Need + Tech Stack */}
+                                {/* Row 7: Funding Needed + Location */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Funding Needed (USD)*</label>
+                                        <input
+                                            type="number"
+                                            placeholder="e.g. 465244"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Location*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. New York"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Row 8: Previous Support + Product Type */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Previous Support Used*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Incubator"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Product Type*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Marketplace"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Row 9: Co-Founder Need + Fundraising Stage */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Co-Founder Needed?</label>
@@ -1150,67 +1233,45 @@ export default function Auth() {
                                         </select>
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Tech Stack*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Node.js, React" />
-                                    </div>
-                                </div>
-
-                                {/* Row 8: Funding Needed + Location */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Funding Needed (USD)*</label>
-                                        <input type="number" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. 200000" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Location*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. New York" />
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Fundraising Stage*</label>
+                                        <select className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                            <option>Pre-seed</option>
+                                            <option>Seed</option>
+                                            <option>Series A</option>
+                                            <option>Series B+</option>
+                                        </select>
                                     </div>
                                 </div>
 
                                 {/* Traction Summary */}
                                 <div>
                                     <label className="block text-sm font-semibold text-gray-700 mb-1">Traction Summary*</label>
-                                    <textarea rows={3} className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Secured letters of intent from 5 enterprise clients."></textarea>
+                                    <textarea
+                                        rows={3}
+                                        placeholder="e.g. Secured letters of intent from 5 enterprise clients."
+                                        className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                    ></textarea>
                                 </div>
 
-                                {/* Fundraising Stage */}
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-1">Fundraising Stage*</label>
-                                    <select className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option>Pre-seed</option>
-                                        <option>Seed</option>
-                                        <option>Series A</option>
-                                        <option>Series B+</option>
-                                    </select>
+                                {/* Submit Button */}
+                                <div className="flex justify-center mt-8">
+                                    <button
+                                        className="px-8 py-2 rounded-full bg-[#0066FF] text-white font-semibold hover:bg-blue-700 transition"
+                                    >
+                                        SIGN-UP
+                                    </button>
                                 </div>
                             </div>
 
-                            {/* Sign-Up Button */}
-                            <div className="flex justify-center mt-10">
-                                <button
-                                    className="px-8 py-2 rounded-full bg-[#0066FF] text-white font-semibold hover:bg-blue-700 transition"
-                                    disabled={!roleType}
-                                >
-                                    SIGN-UP
-                                </button>
-                            </div>
                         </div>
-
-
-
-
-
-
-
-
-
                     </div>
                 )}
 
+
                 {step === 12 && (
-                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                    <div className="w-full h-screen flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 h-screen fixed top-0 left-0 shadow-md">
                             {/* Logo */}
                             <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
@@ -1223,11 +1284,11 @@ export default function Auth() {
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
                             </Link>
 
-                            {/* Image Placeholder */}
+                            {/* Image */}
                             <div className="flex-grow flex items-center justify-center my-8">
                                 <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
                                     <Image
-                                        src="/investor.png" // Ensure the image is placed in the public folder
+                                        src="/investor.png" // Make sure this image is in /public
                                         alt="Investor"
                                         width={320}
                                         height={320}
@@ -1243,11 +1304,10 @@ export default function Auth() {
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
                                 Discover promising startups and connect directly with passionate founders. Sign up to explore investment opportunities and support the next wave of innovation.
                             </p>
-
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8 bg-white rounded-xl shadow-xl">
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
                             <div className="text-center mb-4">
                                 <h2 className="text-4xl font-semibold text-[#0066FF]">INVESTORS SIGN UP</h2>
                                 <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
@@ -1264,19 +1324,35 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-4 w-full max-w-3xl mx-auto">
+                            {/* Form */}
+                            <div className="space-y-6 w-full max-w-4xl mx-auto">
+                                <h2 className="text-lg font-semibold text-blue-800 mb-4">Investor Details</h2>
+
+                                {/* Row 1: Name + Organization */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Justin Wilson" />
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Full Name*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Justin Wilson"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Organization*</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Robinson, Cooper and Nelson" />
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Organization*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Robinson, Cooper and Nelson"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
                                     </div>
+                                </div>
+
+                                {/* Row 2: Investor Type + Ticket Size */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Investor Type*</label>
-                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Investor Type*</label>
+                                        <select className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
                                             <option>VC</option>
                                             <option>Angel</option>
                                             <option>PE</option>
@@ -1284,134 +1360,190 @@ export default function Auth() {
                                         </select>
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Ticket Size (USD)*</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. 50000 - 100000" />
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Ticket Size (USD)*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. 50000 - 100000"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Row 3: Stage Focus + Sector Focus */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Stage Focus*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Pre-seed, Seed"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Stage Focus*</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Pre-seed, Seed" />
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Sector Focus*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Fintech, AI"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Row 4: Geography + Co-Investment */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Geography*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. USA, India"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Sector Focus*</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Fintech, AI" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Geography*</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. USA, India" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Co-Investment?</label>
-                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
-                                            <option value="false">No</option>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Open to Co-Investment?</label>
+                                        <select className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
                                             <option value="true">Yes</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Co-Investment Type</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Syndicate, Direct" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Involvement Level</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Board Seat, Passive" />
-                                    </div>
-                                    <div className="md:col-span-2">
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Evaluation Criteria</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. CAC, Traction, TAM" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Mentoring?</label>
-                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
                                             <option value="false">No</option>
-                                            <option value="true">Yes</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Advisory?</label>
-                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
-                                            <option value="false">No</option>
-                                            <option value="true">Yes</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 gap-4 mt-4">
+                                {/* Row 5: Co-Investment Type + Involvement Level */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Metrics You Track</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. LTV, NPS, CAC" />
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Co-Investment Type</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Syndicate, Direct"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Impact Alignment?</label>
-                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
-                                            <option value="false">No</option>
-                                            <option value="true">Yes</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Impact-Aligned Matches?</label>
-                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
-                                            <option value="false">No</option>
-                                            <option value="true">Yes</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Red Flags in Startups</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Unrealistic projections, No founder-market fit" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Exit Readiness Signals</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Steady revenue, High growth rate" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Deal Discovery Preference</label>
-                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
-                                            <option>Inbound</option>
-                                            <option>Outbound</option>
-                                            <option>Both</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Tools You Use</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Crunchbase, Docsend" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Legal Partner Model</label>
-                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
-                                            <option>In-house Legal</option>
-                                            <option>External Legal</option>
-                                            <option>Hybrid</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Deal Frequency</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. 1-2 per quarter" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Portfolio Companies</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Davis and Sons, Robinson-Garcia" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Support Needed on Platform</label>
-                                        <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 text-gray-800 shadow-sm" placeholder="e.g. Better startup discovery, Legal sync tools" />
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Involvement Level</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Board Seat, Passive"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
                                     </div>
                                 </div>
 
-                                <div className="flex justify-center mt-6">
+                                {/* Row 6: Evaluation Criteria + Deal Discovery */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Evaluation Criteria</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. CAC, Traction, TAM"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Deal Discovery</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Inbound, Outbound, Both"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Row 7: Tools Used + Legal Partner Model */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Tools Used</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Crunchbase, Docsend"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Legal Partner Model</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. In-house Legal"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Row 8: Deal Frequency + Portfolio */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Deal Frequency</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. 1-2 per quarter"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Portfolio</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Davis and Sons, Robinson-Garcia"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Row 9: Mentoring + Advisory Interest */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Mentoring Interest?</label>
+                                        <select className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Advisory Interest?</label>
+                                        <select className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {/* Row 10: Metrics Tracked + Impact Alignment */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Metrics You Track</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. LTV, NPS, CAC"
+                                            className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Impact Alignment?</label>
+                                        <select className="w-full border border-blue-200 rounded-xl px-4 py-2 text-gray-800 shadow-sm">
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {/* Submit Button */}
+                                <div className="flex justify-center mt-8">
                                     <button
                                         className="px-8 py-2 rounded-full bg-[#0066FF] text-white font-semibold hover:bg-blue-700"
-                                        disabled={!roleType}
                                     >
                                         SIGN-UP
                                     </button>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 )}
 
+
                 {step === 13 && (
-                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                    <div className="w-full h-screen flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 h-screen fixed top-0 left-0 shadow-md">
                             {/* Logo */}
                             <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
@@ -1424,11 +1556,11 @@ export default function Auth() {
                                 <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
                             </Link>
 
-                            {/* Image Placeholder */}
+                            {/* Image */}
                             <div className="flex-grow flex items-center justify-center my-8">
                                 <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
                                     <Image
-                                        src="/accelerators.png" // Ensure the image is placed in the public folder
+                                        src="/accelerators.png" // Make sure this image is in /public
                                         alt="Accelerator"
                                         width={320}
                                         height={320}
@@ -1444,18 +1576,19 @@ export default function Auth() {
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
                                 Connect with high-potential startups and offer them the mentorship, resources, and support they need to grow. Sign up to discover founders ready to scale and make an impact.
                             </p>
-
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
-                            <div className="text-center mb-4">
-                                <h2 className="text-4xl font-semibold">ACCELERATOR SIGN UP</h2>
-                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
-                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
-                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 bg-white shadow-lg rounded-3xl h-screen overflow-y-auto">
+                            <div className="text-center mb-6">
+                                <h2 className="text-4xl font-bold text-blue-800">ACCELERATOR SIGN UP</h2>
+                                <p className="text-sm text-gray-500 mt-2">Already have an account? Sign in below</p>
+                                <div className="flex gap-4 justify-center mt-4 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">
+                                        Sign Up
+                                    </button>
                                     <button
-                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        className="px-6 py-2 rounded-full border border-blue-400 text-blue-600 text-sm font-semibold hover:bg-blue-100 transition"
                                         onClick={() => setStep(6)}
                                     >
                                         Sign In
@@ -1465,35 +1598,51 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-2 w-full max-w-xl mx-auto">
+                            <div className="space-y-4 w-full max-w-xl mx-auto">
                                 {/* Accelerator Name */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Accelerator Name*</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Bryan and Sons" />
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Bryan and Sons"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
                                 </div>
 
                                 {/* Startup Types */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Types of Startups You Support*</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. AI, FinTech" />
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. AI, FinTech"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
                                 </div>
 
                                 {/* Services Offered */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Services Offered*</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Office Space, Legal, Funding" />
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Office Space, Legal, Funding"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
                                 </div>
 
                                 {/* Intake Size */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Intake Size*</label>
-                                    <input type="number" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. 36" />
+                                    <input
+                                        type="number"
+                                        placeholder="e.g. 36"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
                                 </div>
 
                                 {/* Batch Frequency */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Batch Frequency*</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400">
                                         <option>Monthly</option>
                                         <option>Quarterly</option>
                                         <option>Bi-Annually</option>
@@ -1504,19 +1653,27 @@ export default function Auth() {
                                 {/* Program Duration */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Program Duration*</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. 6 months" />
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. 6 months"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
                                 </div>
 
                                 {/* Stage Focus */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Stage Focus*</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Idea, MVP" />
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Idea, MVP"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
                                 </div>
 
                                 {/* Equity Taken */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Do You Take Equity?</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400">
                                         <option value="true">Yes</option>
                                         <option value="false">No</option>
                                     </select>
@@ -1525,19 +1682,27 @@ export default function Auth() {
                                 {/* Selection Criteria */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Selection Criteria*</label>
-                                    <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Institution use act own politics." rows={2}></textarea>
+                                    <textarea
+                                        placeholder="e.g. Innovative ideas, strong team"
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    ></textarea>
                                 </div>
 
                                 {/* Rejection Criteria */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Rejection Criteria</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Outside approach ok." />
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Outside target geography"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
                                 </div>
 
-                                {/* Funding or Mentorship */}
+                                {/* Primary Offering */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Primary Offering*</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400">
                                         <option>Funding</option>
                                         <option>Mentorship</option>
                                         <option>Both</option>
@@ -1547,44 +1712,56 @@ export default function Auth() {
                                 {/* Affiliations */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Affiliations</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Govt Body, University" />
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Govt Body, University"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
                                 </div>
 
                                 {/* Delivery Mode */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Program Delivery Mode</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400">
                                         <option>Online</option>
                                         <option>Offline</option>
                                         <option>Hybrid</option>
                                     </select>
                                 </div>
 
-                                {/* Cross Border Support */}
+                                {/* Cross-Border Support */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Do You Support Cross-Border Startups?</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400">
                                         <option value="true">Yes</option>
                                         <option value="false">No</option>
                                     </select>
                                 </div>
 
-                                {/* Onboarding & Match Support */}
+                                {/* Onboarding Support */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Onboarding / Matching Support</label>
-                                    <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Particularly respond cup pretty since." rows={2}></textarea>
+                                    <textarea
+                                        placeholder="e.g. Tailored onboarding plans for each startup"
+                                        rows={2}
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    ></textarea>
                                 </div>
 
-                                {/* Open to Partnerships */}
+                                {/* Partnerships */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Partnerships With</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Government, Experts" />
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Government, Experts"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
                                 </div>
 
                                 {/* Submit Button */}
-                                <div className="flex justify-center pt-2">
+                                <div className="flex justify-center pt-4">
                                     <button
-                                        className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900"
+                                        className="px-8 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
                                     >
                                         SIGN-UP
                                     </button>
@@ -1595,10 +1772,11 @@ export default function Auth() {
                     </div>
                 )}
 
+
                 {step === 14 && (
-                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                    <div className="w-full h-screen flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 h-screen fixed top-0 left-0 shadow-md">
                             {/* Logo */}
                             <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
@@ -1631,18 +1809,19 @@ export default function Auth() {
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
                                 Share your expertise to guide emerging startups or contribute valuable insights through research. Sign up to mentor passionate founders and help shape the future of innovation.
                             </p>
-
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
-                            <div className="text-center mb-4">
-                                <h2 className="text-4xl font-semibold">MENTOR RESEARCHER SIGN UP</h2>
-                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
-                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
-                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 bg-white shadow-xl rounded-3xl h-screen overflow-y-auto">
+                            <div className="text-center mb-6">
+                                <h2 className="text-3xl font-bold text-blue-800">MENTOR RESEARCHER SIGN UP</h2>
+                                <p className="text-sm text-gray-500 mt-2">Already have an account? Sign in below</p>
+                                <div className="flex gap-3 justify-center mt-4 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">
+                                        Sign Up
+                                    </button>
                                     <button
-                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        className="px-6 py-2 rounded-full border border-blue-400 text-blue-600 text-sm font-semibold hover:bg-blue-100 transition"
                                         onClick={() => setStep(6)}
                                     >
                                         Sign In
@@ -1652,138 +1831,178 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-2 w-full max-w-xl mx-auto">
-                                {/* Full Name */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Kelsey Thomas" />
+                            <div className="space-y-4 w-full max-w-3xl mx-auto">
+                                {/* Row 1: Full Name + Primary Field */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
+                                        <input
+                                            type="text"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                            placeholder="e.g. Kelsey Thomas"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Primary Field of Research*</label>
+                                        <input
+                                            type="text"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                            placeholder="e.g. Policy"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Primary Field */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Primary Field of Research*</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Policy" />
+                                {/* Row 2: Mentorship Open To + Mentorship Style */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Mentorship For*</label>
+                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                            <option>Individuals</option>
+                                            <option>Teams</option>
+                                            <option>Both</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Mentorship Style*</label>
+                                        <input
+                                            type="text"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                            placeholder="e.g. 1:1, Group"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Mentorship Open To */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Mentorship For*</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option>Individuals</option>
-                                        <option>Teams</option>
-                                        <option>Both</option>
-                                    </select>
+                                {/* Row 3: Research Outputs + Current Research Stage */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Research Outputs*</label>
+                                        <input
+                                            type="text"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                            placeholder="e.g. Policy Recs, Papers"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Current Research Stage*</label>
+                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                            <option>Idea</option>
+                                            <option>Proposal</option>
+                                            <option>Data Collection</option>
+                                            <option>Analysis</option>
+                                            <option>Publication</option>
+                                        </select>
+                                    </div>
                                 </div>
 
-                                {/* Mentorship Style Options */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Mentorship Style*</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. 1:1, Group" />
+                                {/* Row 4: Collaborators + Joint Project Interests */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Looking to Collaborate With</label>
+                                        <input
+                                            type="text"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                            placeholder="e.g. Students, Peers"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Joint Projects for*</label>
+                                        <input
+                                            type="text"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                            placeholder="e.g. Feedback, Pilots"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Research Outputs */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Research Outputs*</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Policy Recs, Papers" />
+                                {/* Row 5: Tools/Datasets + Availability */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Tools / Datasets You Use</label>
+                                        <input
+                                            type="text"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                            placeholder="e.g. GitHub, TensorFlow"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Availability</label>
+                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                            <option>Weekly</option>
+                                            <option>Bi-Weekly</option>
+                                            <option>Monthly</option>
+                                        </select>
+                                    </div>
                                 </div>
 
-                                {/* Desired Impact */}
+                                {/* Row 6: Preferred Communication + Mentorship Type */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Communication with Mentees</label>
+                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                            <option>Chat</option>
+                                            <option>Email</option>
+                                            <option>Video Call</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Mentorship Type*</label>
+                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                            <option>Paid</option>
+                                            <option>Voluntary</option>
+                                            <option>Both</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {/* Larger Textareas */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Desired Impact</label>
-                                    <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Year field little federal." rows={2}></textarea>
+                                    <textarea
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        placeholder="e.g. Drive sustainable development"
+                                        rows={2}
+                                    ></textarea>
                                 </div>
 
-                                {/* Current Research Stage */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Current Research Stage*</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option>Idea</option>
-                                        <option>Proposal</option>
-                                        <option>Data Collection</option>
-                                        <option>Analysis</option>
-                                        <option>Publication</option>
-                                    </select>
-                                </div>
-
-                                {/* Collaborators Wanted */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Looking to Collaborate With</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Students, Peers" />
-                                </div>
-
-                                {/* Joint Project Interests */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Joint Projects for*</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Feedback, Pilots" />
-                                </div>
-
-                                {/* Tools / Datasets Used */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Tools / Datasets You Use</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. GitHub, TensorFlow" />
-                                </div>
-
-                                {/* Availability */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Availability</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option>Weekly</option>
-                                        <option>Bi-Weekly</option>
-                                        <option>Monthly</option>
-                                    </select>
-                                </div>
-
-                                {/* Preferred Communication */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Communication with Mentees</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option>Chat</option>
-                                        <option>Email</option>
-                                        <option>Video Call</option>
-                                    </select>
-                                </div>
-
-                                {/* Paid or Voluntary */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Mentorship Type*</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option>Paid</option>
-                                        <option>Voluntary</option>
-                                        <option>Both</option>
-                                    </select>
-                                </div>
-
-                                {/* Tracking Mentee Growth */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">How Do You Track Mentee Growth?</label>
-                                    <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Early choice unit." rows={2}></textarea>
+                                    <textarea
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        placeholder="e.g. Progress reports and feedback sessions"
+                                        rows={2}
+                                    ></textarea>
                                 </div>
 
-                                {/* Network Memberships */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Networks You Are Part Of</label>
-                                    <input type="text" className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. MentorNet" />
-                                </div>
-
-                                {/* Challenges as Mentor */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Challenges You&apos;ve Faced as a Mentor</label>
-                                    <textarea className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Own people total within situation thousand." rows={2}></textarea>
+                                    <textarea
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        placeholder="e.g. Balancing time between research and mentoring"
+                                        rows={2}
+                                    ></textarea>
                                 </div>
 
-                                {/* Interest in Value-Aligned Matches */}
+                                <div>
+                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Networks You Are Part Of</label>
+                                    <input
+                                        type="text"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        placeholder="e.g. MentorNet"
+                                    />
+                                </div>
+
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Value-Aligned Matches?</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
                                         <option value="true">Yes</option>
                                         <option value="false">No</option>
                                     </select>
                                 </div>
 
                                 {/* Submit Button */}
-                                <div className="flex justify-center pt-2">
+                                <div className="flex justify-center pt-4">
                                     <button
-                                        className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900"
+                                        className="px-8 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
                                     >
                                         SIGN-UP
                                     </button>
@@ -1794,10 +2013,11 @@ export default function Auth() {
                     </div>
                 )}
 
+
                 {step === 15 && (
-                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                    <div className="w-full h-screen flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 h-screen fixed top-0 left-0 shadow-md">
                             {/* Logo */}
                             <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
@@ -1824,18 +2044,16 @@ export default function Auth() {
                             </div>
 
                             {/* Description */}
-                            {/* Description */}
                             <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
                                 Join as an Executive
                             </h2>
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
                                 Connect with high-growth startups seeking experienced leadership. Sign up to explore strategic roles, contribute to impactful ventures, and drive meaningful change.
                             </p>
-
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
                             <div className="text-center mb-4">
                                 <h2 className="text-4xl font-semibold">EXECUTIVE SIGN UP</h2>
                                 <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
@@ -1897,7 +2115,7 @@ export default function Auth() {
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">What Are You Looking for in a Partner?</label>
                                     <textarea
-                                        placeholder="e.g. Meet down term."
+                                        placeholder="e.g. Strategic alignment and innovation mindset"
                                         rows={2}
                                         className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
                                     ></textarea>
@@ -1967,7 +2185,7 @@ export default function Auth() {
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Industry Challenges You’re Facing</label>
                                     <textarea
-                                        placeholder="e.g. Direction every dream."
+                                        placeholder="e.g. Adapting to fast-paced innovation cycles"
                                         rows={2}
                                         className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
                                     ></textarea>
@@ -1988,29 +2206,27 @@ export default function Auth() {
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Budget Mandate*</label>
                                     <input
                                         type="text"
-                                        placeholder="e.g. $231981"
+                                        placeholder="e.g. $500,000"
                                         className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
                                     />
                                 </div>
 
                                 {/* Submit Button */}
                                 <div className="flex justify-center pt-2">
-                                    <button
-                                        className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900"
-                                    >
+                                    <button className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900">
                                         SIGN-UP
                                     </button>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 )}
 
+
                 {step === 16 && (
-                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                    <div className="w-full h-screen flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 h-screen fixed top-0 left-0 shadow-md">
                             {/* Logo */}
                             <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
@@ -2043,11 +2259,10 @@ export default function Auth() {
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
                                 Collaborate with startups and innovation ecosystems to drive policy, funding, and national development. Sign up to support emerging ventures and enable impactful public-private partnerships.
                             </p>
-
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
                             <div className="text-center mb-4">
                                 <h2 className="text-4xl font-semibold">GOVERNMENT AUTHORITY SIGN UP</h2>
                                 <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
@@ -2120,7 +2335,7 @@ export default function Auth() {
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Challenges You&apos;ve Faced</label>
                                     <textarea
-                                        placeholder="e.g. Kitchen later lot eye billion sort."
+                                        placeholder="e.g. Resource allocation, technology adoption"
                                         rows={2}
                                         className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
                                     ></textarea>
@@ -2198,7 +2413,7 @@ export default function Auth() {
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Impact Evaluation Preference</label>
                                     <textarea
-                                        placeholder="e.g. Like him child series room."
+                                        placeholder="e.g. Quarterly reports and analytics"
                                         rows={2}
                                         className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
                                     ></textarea>
@@ -2208,7 +2423,7 @@ export default function Auth() {
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Partnership Constraints</label>
                                     <textarea
-                                        placeholder="e.g. Fast technology follow."
+                                        placeholder="e.g. Budgetary limitations, policy restrictions"
                                         rows={2}
                                         className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
                                     ></textarea>
@@ -2222,14 +2437,14 @@ export default function Auth() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 )}
 
+
                 {step === 17 && (
-                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                    <div className="w-full h-screen flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 h-screen fixed top-0 left-0 shadow-md">
                             {/* Logo */}
                             <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
@@ -2262,11 +2477,10 @@ export default function Auth() {
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
                                 Support startups with legal guidance, compliance, and intellectual property protection. Sign up to offer your legal expertise and help ventures build on a strong foundation.
                             </p>
-
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
                             <div className="text-center mb-4">
                                 <h2 className="text-4xl font-semibold">LEGAL SIGN UP</h2>
                                 <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
@@ -2376,7 +2590,7 @@ export default function Auth() {
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Common Legal Challenges You See</label>
                                     <textarea
-                                        placeholder="e.g. Happen range feel baby yes."
+                                        placeholder="e.g. Contract clarity, IP disputes"
                                         rows={2}
                                         className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
                                     ></textarea>
@@ -2406,7 +2620,7 @@ export default function Auth() {
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Privacy Concerns or Limitations</label>
                                     <textarea
-                                        placeholder="e.g. Manager popular candidate because peace."
+                                        placeholder="e.g. Sensitive data handling policies"
                                         rows={2}
                                         className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
                                     ></textarea>
@@ -2420,14 +2634,14 @@ export default function Auth() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 )}
 
+
                 {step === 18 && (
-                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                    <div className="w-full h-screen flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 h-screen fixed top-0 left-0 shadow-md">
                             {/* Logo */}
                             <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
@@ -2460,11 +2674,10 @@ export default function Auth() {
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
                                 Protect startups from digital threats by offering security assessments, risk management, and compliance solutions. Sign up to help founders build safe and resilient digital products.
                             </p>
-
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
                             <div className="text-center mb-4">
                                 <h2 className="text-4xl font-semibold">CYBERSECURITY SIGN UP</h2>
                                 <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
@@ -2618,14 +2831,14 @@ export default function Auth() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 )}
 
+
                 {step === 19 && (
-                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                    <div className="w-full h-screen flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 h-screen fixed top-0 left-0 shadow-md">
                             {/* Logo */}
                             <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
@@ -2658,11 +2871,10 @@ export default function Auth() {
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
                                 Work with innovative startups on exciting projects across design, development, content, marketing, and more. Sign up to find meaningful freelance opportunities and grow your portfolio.
                             </p>
-
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
                             <div className="text-center mb-4">
                                 <h2 className="text-4xl font-semibold">FREELANCER SIGN UP</h2>
                                 <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
@@ -2797,14 +3009,14 @@ export default function Auth() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 )}
 
+
                 {step === 20 && (
-                    <div className="w-full min-h-screen pt-0 pb-0 flex flex-col md:flex-row bg-white">
+                    <div className="w-full h-screen flex flex-col md:flex-row bg-white">
                         {/* Left Section */}
-                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
+                        <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 h-screen fixed top-0 left-0 shadow-md">
                             {/* Logo */}
                             <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
                                 <Image
@@ -2837,18 +3049,17 @@ export default function Auth() {
                             <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
                                 Help founders prepare for successful exits through strategic planning, M&A support, and valuation insights. Sign up to guide startups through smooth and rewarding transitions.
                             </p>
-
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
                             <div className="text-center mb-4">
-                                <h2 className="text-4xl font-semibold">EXIT PLANNER SIGN UP</h2>
+                                <h2 className="text-4xl font-semibold text-blue-700">EXIT PLANNER SIGN UP</h2>
                                 <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
                                 <div className="flex gap-4 justify-center mt-3 flex-wrap">
-                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                                    <button className="px-6 py-2 rounded-full bg-blue-600 text-white text-sm hover:bg-blue-700 transition">Sign Up</button>
                                     <button
-                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        className="px-6 py-2 rounded-full border border-blue-300 text-blue-600 text-sm hover:bg-blue-50 transition"
                                         onClick={() => setStep(6)}
                                     >
                                         Sign In
@@ -3000,15 +3211,15 @@ export default function Auth() {
 
                                 {/* Submit Button */}
                                 <div className="flex justify-center pt-2">
-                                    <button className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900">
+                                    <button className="px-8 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
                                         SIGN-UP
                                     </button>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 )}
+
 
 
 
