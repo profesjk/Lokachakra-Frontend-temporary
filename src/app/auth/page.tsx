@@ -1087,7 +1087,7 @@ export default function Auth() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Domain(s)*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. HealthTech, AI" />
+                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. HealthTech, Blockchain" />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Biggest Challenge*</label>
@@ -1099,7 +1099,7 @@ export default function Auth() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Collaborators Needed*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Investors, Mentors" />
+                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Investors, Technical Experts" />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Currently Seeking*</label>
@@ -1110,26 +1110,52 @@ export default function Auth() {
                                 {/* Growth Goals */}
                                 <div>
                                     <label className="block text-sm font-semibold text-gray-700 mb-1">12-Month Growth Goals*</label>
-                                    <textarea rows={3} className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Launch MVP and secure 10 pilot customers."></textarea>
+                                    <textarea rows={3} className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Enter 3 new regional markets and hire sales team."></textarea>
                                 </div>
 
-                                {/* Row 5: Funding Model + Tech Stack */}
+                                {/* Row 5: Interested in Accelerator + Product Type */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Preferred Funding Model*</label>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Interested in Accelerator?</label>
                                         <select className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                            <option>Equity</option>
-                                            <option>Revenue-share</option>
-                                            <option>Convertible Note</option>
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Product Type*</label>
+                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Marketplace" />
+                                    </div>
+                                </div>
+
+                                {/* Row 6: Hiring Needs + Previous Support Used */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Hiring Needs*</label>
+                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Backend, Frontend" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Previous Support Used*</label>
+                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Incubator" />
+                                    </div>
+                                </div>
+
+                                {/* Row 7: Co-Founder Need + Tech Stack */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-1">Co-Founder Needed?</label>
+                                        <select className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800">
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
                                         </select>
                                     </div>
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Tech Stack*</label>
-                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Node.js, Solidity" />
+                                        <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Node.js, React" />
                                     </div>
                                 </div>
 
-                                {/* Row 6: Funding Needed + Location */}
+                                {/* Row 8: Funding Needed + Location */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Funding Needed (USD)*</label>
@@ -1139,6 +1165,12 @@ export default function Auth() {
                                         <label className="block text-sm font-semibold text-gray-700 mb-1">Location*</label>
                                         <input type="text" className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. New York" />
                                     </div>
+                                </div>
+
+                                {/* Traction Summary */}
+                                <div>
+                                    <label className="block text-sm font-semibold text-gray-700 mb-1">Traction Summary*</label>
+                                    <textarea rows={3} className="w-full border border-blue-200 rounded-xl px-4 py-2 shadow-sm text-gray-800" placeholder="e.g. Secured letters of intent from 5 enterprise clients."></textarea>
                                 </div>
 
                                 {/* Fundraising Stage */}
@@ -1163,6 +1195,7 @@ export default function Auth() {
                                 </button>
                             </div>
                         </div>
+
 
 
 
