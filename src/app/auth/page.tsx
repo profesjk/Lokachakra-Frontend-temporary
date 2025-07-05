@@ -2443,14 +2443,16 @@ export default function Auth() {
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
-                            <div className="text-center mb-4">
-                                <h2 className="text-4xl font-semibold">LEGAL SIGN UP</h2>
-                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
-                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
-                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 bg-white shadow-xl rounded-3xl h-screen overflow-y-auto">
+                            <div className="text-center mb-6">
+                                <h2 className="text-3xl font-bold text-blue-800">LEGAL SIGN UP</h2>
+                                <p className="text-sm text-gray-500 mt-2">Already have an account? Sign in below</p>
+                                <div className="flex gap-3 justify-center mt-4 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">
+                                        Sign Up
+                                    </button>
                                     <button
-                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        className="px-6 py-2 rounded-full border border-blue-400 text-blue-600 text-sm font-semibold hover:bg-blue-100 transition"
                                         onClick={() => setStep(6)}
                                     >
                                         Sign In
@@ -2460,143 +2462,140 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-2 w-full max-w-xl mx-auto">
-                                {/* Full Name */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Cheryl Herrera"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                            <div className="space-y-4 w-full max-w-3xl mx-auto">
+                                {/* Row 1: Full Name + Current Role */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Cheryl Herrera"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Current Role*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Auditor"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Current Role */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Current Role*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Auditor"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 2: Specializations + Tools Used */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Specializations*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Crypto Compliance, IP"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Tools You Use</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Custom ERP, LexisNexis"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Specialization */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Specializations*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Crypto Compliance, IP"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 3: Looking to Offer + Industry Sectors */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Looking to Offer*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Collaboration"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Industry Sectors*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Tech, Health"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Tools Used */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Tools You Use</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Custom ERP, LexisNexis"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 4: Engagement Mode + Startup Advisory Experience */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Engagement Mode*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Retainer"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Startup Advisory Experience?</label>
+                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
                                 </div>
 
-                                {/* Looking to Offer */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Looking to Offer*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Collaboration"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 5: Mentorship Availability + Preferred Update Channels */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Available for Mentorship?</label>
+                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Update Channels</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Webinars, Newsletters"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Startup Advisory Experience */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Have Startup Advisory Experience?</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option value="true">Yes</option>
-                                        <option value="false">No</option>
-                                    </select>
-                                </div>
-
-                                {/* Industry Sectors */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Industry Sectors*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Tech, Health"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Engagement Mode */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Engagement Mode*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Retainer"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Mentorship Availability */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Available for Mentorship?</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option value="true">Yes</option>
-                                        <option value="false">No</option>
-                                    </select>
-                                </div>
-
-                                {/* Common Legal Challenges */}
+                                {/* Single Column: Textareas */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Common Legal Challenges You See</label>
                                     <textarea
                                         placeholder="e.g. Contract clarity, IP disputes"
                                         rows={2}
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                                     ></textarea>
                                 </div>
-
-                                {/* Update Channels */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Update Channels</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Webinars, Newsletters"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Client Types */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Types of Clients Served</label>
                                     <input
                                         type="text"
                                         placeholder="e.g. Corporates, Startups"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                                     />
                                 </div>
-
-                                {/* Privacy Concerns */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Privacy Concerns or Limitations</label>
                                     <textarea
                                         placeholder="e.g. Sensitive data handling policies"
                                         rows={2}
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                                     ></textarea>
                                 </div>
 
                                 {/* Submit Button */}
-                                <div className="flex justify-center pt-2">
-                                    <button className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900">
+                                <div className="flex justify-center pt-4">
+                                    <button className="px-8 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
                                         SIGN-UP
                                     </button>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 )}
 
@@ -2640,14 +2639,16 @@ export default function Auth() {
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
-                            <div className="text-center mb-4">
-                                <h2 className="text-4xl font-semibold">CYBERSECURITY SIGN UP</h2>
-                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
-                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
-                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 bg-white shadow-xl rounded-3xl h-screen overflow-y-auto">
+                            <div className="text-center mb-6">
+                                <h2 className="text-3xl font-bold text-blue-800">CYBERSECURITY SIGN UP</h2>
+                                <p className="text-sm text-gray-500 mt-2">Already have an account? Sign in below</p>
+                                <div className="flex gap-3 justify-center mt-4 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">
+                                        Sign Up
+                                    </button>
                                     <button
-                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        className="px-6 py-2 rounded-full border border-blue-400 text-blue-600 text-sm font-semibold hover:bg-blue-100 transition"
                                         onClick={() => setStep(6)}
                                     >
                                         Sign In
@@ -2657,143 +2658,144 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-2 w-full max-w-xl mx-auto">
-                                {/* Full Name */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. John Knight"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                            <div className="space-y-4 w-full max-w-3xl mx-auto">
+                                {/* Row 1: Full Name + Specialization Areas */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. John Knight"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Specialization Areas*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. DevOps, Security Audits"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Specialization Areas */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Specialization Areas*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. DevOps, Security Audits"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 2: Domain + Gig Preference */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Domain*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Cloud"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Gig Preference*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Long-term Strategy"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Domain */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Domain*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Cloud"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 3: Objectives + Tools/Frameworks */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Objectives*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Learn, Share Expertise"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Tools / Frameworks*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Nmap, Metasploit"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Gig Preference */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Gig Preference*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Long-term Strategy"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 4: Preferred Update Method + Require Log Access */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Update Method</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Conferences"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Require Log Access?</label>
+                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
                                 </div>
 
-                                {/* Objectives */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Objectives*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Learn, Share Expertise"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 5: Interested in Mentorship + Certifications */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Mentorship?</label>
+                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Certifications</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. AWS Sec, OSCP"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Tools/Frameworks */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Tools / Frameworks*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Nmap, Metasploit"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 6: Team Preference + Preferred Partnership Type */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Team Preference*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Team-based"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Partnership Type</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Informal"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Preferred Update Method */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Update Method</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Conferences"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Need Access to Logs */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Require Log Access?</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option value="true">Yes</option>
-                                        <option value="false">No</option>
-                                    </select>
-                                </div>
-
-                                {/* Interested in Mentorship */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Interested in Mentorship?</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option value="true">Yes</option>
-                                        <option value="false">No</option>
-                                    </select>
-                                </div>
-
-                                {/* Certifications */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Certifications</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. AWS Sec, OSCP"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Team Preference */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Team Preference*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Team-based"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Partnership Type */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Partnership Type</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Informal"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Biggest Challenge */}
+                                {/* Textarea: Biggest Challenge */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Biggest Challenge</label>
                                     <textarea
                                         placeholder="e.g. Access control"
                                         rows={2}
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                                     ></textarea>
                                 </div>
 
                                 {/* Submit Button */}
-                                <div className="flex justify-center pt-2">
-                                    <button className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900">
+                                <div className="flex justify-center pt-4">
+                                    <button className="px-8 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
                                         SIGN-UP
                                     </button>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 )}
 
@@ -2820,7 +2822,7 @@ export default function Auth() {
                                     <Image
                                         src="/freelancers.png" // Ensure the image is placed in the public folder
                                         alt="Freelancer"
-                                        width={320}
+                                        width={420}
                                         height={320}
                                         className="object-cover w-full h-full"
                                     />
@@ -2837,14 +2839,16 @@ export default function Auth() {
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
-                            <div className="text-center mb-4">
-                                <h2 className="text-4xl font-semibold">FREELANCER SIGN UP</h2>
-                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
-                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
-                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white text-sm">Sign Up</button>
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 bg-white shadow-xl rounded-3xl h-screen overflow-y-auto">
+                            <div className="text-center mb-6">
+                                <h2 className="text-3xl font-bold text-blue-800">FREELANCER SIGN UP</h2>
+                                <p className="text-sm text-gray-500 mt-2">Already have an account? Sign in below</p>
+                                <div className="flex gap-3 justify-center mt-4 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">
+                                        Sign Up
+                                    </button>
                                     <button
-                                        className="px-6 py-2 rounded-full border border-gray-400 text-gray-800 text-sm"
+                                        className="px-6 py-2 rounded-full border border-blue-400 text-blue-600 text-sm font-semibold hover:bg-blue-100 transition"
                                         onClick={() => setStep(6)}
                                     >
                                         Sign In
@@ -2854,124 +2858,125 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
-                            <div className="space-y-2 w-full max-w-xl mx-auto">
-                                {/* Full Name */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Carol Curry"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                            <div className="space-y-4 w-full max-w-3xl mx-auto">
+                                {/* Row 1: Full Name + Expertise Area */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Full Name*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Carol Curry"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Expertise Area*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Writing"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Expertise Area */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Expertise Area*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Writing"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 2: Preferred Clients + Work Mode */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Client Types*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Startups, Government"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Work Mode*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Part-time"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Preferred Clients */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Client Types*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Startups, Government"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 3: Experience Level + Project Timeline */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Experience Level*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Junior"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Project Timeline*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Ongoing"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Work Mode */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Work Mode*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Part-time"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
+                                {/* Row 4: Platforms Used + Communication Style */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Freelancing Platforms Used*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Upwork, Lokachakra"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Communication Style</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Regular Syncs"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Experience Level */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Experience Level*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Junior"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Project Timeline */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Preferred Project Timeline*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Ongoing"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Finding Platforms */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Freelancing Platforms Used*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Upwork, Lokachakra"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Communication Style */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Communication Style</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Regular Syncs"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Team Work Preference */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Team Work Preference*</label>
-                                    <input
-                                        type="text"
-                                        placeholder="e.g. Team"
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
-                                    />
-                                </div>
-
-                                {/* Open to Crypto Gigs */}
-                                <div>
-                                    <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Crypto Gigs?</label>
-                                    <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800">
-                                        <option value="false">No</option>
-                                        <option value="true">Yes</option>
-                                    </select>
+                                {/* Row 5: Team Work Preference + Open to Crypto Gigs */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Team Work Preference*</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. Team"
+                                            className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold mb-1 text-gray-700">Open to Crypto Gigs?</label>
+                                        <select className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                                            <option value="false">No</option>
+                                            <option value="true">Yes</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 {/* Verification Preference */}
                                 <div>
                                     <label className="block text-sm font-semibold mb-1 text-gray-700">Verification Preference</label>
                                     <textarea
-                                        placeholder="e.g. Strategy from."
+                                        placeholder="e.g. Strategy form."
                                         rows={2}
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow-sm text-gray-800"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-2 shadow text-gray-800 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                                     ></textarea>
                                 </div>
 
                                 {/* Submit Button */}
-                                <div className="flex justify-center pt-2">
-                                    <button className="px-8 py-2 rounded-full bg-gray-700 text-white font-semibold hover:bg-gray-900">
+                                <div className="flex justify-center pt-4">
+                                    <button className="px-8 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
                                         SIGN-UP
                                     </button>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 )}
 
