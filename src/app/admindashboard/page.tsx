@@ -209,7 +209,7 @@ export default function AdminDashboard() {
                     {activeTab === "dashboard" && (
                         <>
                             {/* Header Cards */}
-                            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+                            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6 mt-15">
                                 {[...Array(5)].map((_, idx) => (
                                     <div
                                         key={idx}
@@ -297,7 +297,7 @@ export default function AdminDashboard() {
                     {activeTab === "tickets" && (
                         <>
                             {/* Ticket Stats */}
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 mt-15">
                                 <div className="flex flex-col items-center justify-center bg-white p-4 rounded-md shadow">
                                     <div className="text-xs text-gray-500">TOTAL TICKETS</div>
                                     <div className="text-2xl font-bold text-gray-900">6,635</div>
