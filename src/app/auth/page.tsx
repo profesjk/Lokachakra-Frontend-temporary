@@ -1,9 +1,10 @@
-// pages/signup.js
 "use client";
+
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import ChatBot from '../sections/ChatBot';
 import Link from 'next/link';
+import ChatBot from '../sections/ChatBot';
 
 
 const roles = [
@@ -34,39 +35,45 @@ export default function Auth() {
     function AuthLeftSide() {
         return (
             <div className="md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-6 sm:p-10 min-h-screen shadow-md">
-                {/* Logo */}
-                <div className="flex items-center w-full mb-8">
-                    <Image src="/lokachakra-logo.png" alt="Lokachakra" width={40} height={40} />
-                    <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
-                </div>
+                            {/* Logo */}
+                            <Link href="/" className="flex items-center w-full mb-8 hover:opacity-90 transition">
+                                <Image
+                                    src="/lokachakra-logo.png"
+                                    alt="Lokachakra"
+                                    width={40}
+                                    height={40}
+                                    priority
+                                />
+                                <span className="ml-2 text-lg font-semibold text-blue-700">Lokachakra</span>
+                            </Link>
 
-                {/* Image Placeholder */}
-                <div className="flex-grow flex items-center justify-center my-8">
-                    <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
-                        <Image
-                            src="/founder.png" // Ensure the image is placed in the public folder
-                            alt="Founder"
-                            width={320}
-                            height={320}
-                            className="object-cover w-full h-full"
-                        />
-                    </div>
-                </div>
+                            {/* Image Placeholder */}
+                            <div className="flex-grow flex items-center justify-center my-8">
+                                <div className="w-72 h-72 sm:w-80 sm:h-80 border border-blue-300 flex items-center justify-center bg-white">
+                                    <Image
+                                        src="/workillustration.png" // Ensure the image is placed in the public folder
+                                        alt="Welcome Back"
+                                        width={320}
+                                        height={320}
+                                        className="object-cover w-full h-full"
+                                    />
+                                </div>
+                            </div>
 
-                {/* Description */}
-                <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">LOREM IPSUM IS TEXT</h2>
-                <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
-                </p>
-            </div>
-
-
+                            {/* Description */}
+                            <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-blue-800">
+                                Welcome Back to Lokachakra
+                            </h2>
+                            <p className="text-sm sm:text-base text-center text-gray-700 max-w-md mt-3 px-4">
+                                Continue your journey with the community that&apos;s shaping the future of innovation. Access powerful tools, connect with changemakers, and keep building what matters. We&apos;re glad to have you back.
+                            </p>
+                        </div>
         );
     }
 
     return (
         <>
-            {/* <Navbar /> */}
+            
             <div className="min-h-screen w-full flex flex-col items-center justify-center bg-white text-gray-800">
                 {step === 1 && (
                     <div className="w-full max-w-6xl p-6 flex flex-col items-center bg-white rounded-xl shadow-sm">
@@ -307,308 +314,6 @@ export default function Auth() {
                                 <input type="checkbox" className="accent-gray-700" /> I agree to our{" "}
                                 <span className="underline">PRIVACY POLICY</span> &{" "}
                                 <span className="underline">TERMS & CONDITION</span>
-                            </label>
-                        </div>
-                    </div>
-                )}
-
-                {step === 4 && (
-                    <div className="w-full min-h-screen pt-[0px] pb-0 flex flex-col md:flex-row bg-white">
-                        {/* Left Section */}
-                        <AuthLeftSide />
-
-                        {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
-                            <div className="text-center mb-4">
-                                <h2 className="text-3xl font-semibold">SIGN UP</h2>
-                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
-                                <div className="flex flex-wrap gap-4 justify-center mt-3">
-                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white">Sign Up</button>
-                                    <button className="px-6 py-2 rounded-full border border-gray-400 text-gray-800" onClick={() => setStep(6)}>Sign In</button>
-                                </div>
-                            </div>
-
-                            <p className="text-center text-lg font-semibold mb-2">Documentation and Basic Details</p>
-                            <hr className="w-2/3 border-t border-gray-300 mb-6" />
-
-                            <div className="space-y-10 w-full">
-                                {/* BASIC DETAILS */}
-                                <div>
-                                    <h2 className="text-lg font-semibold text-gray-800 mb-6">BASIC DETAIL</h2>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {/* Full Name */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Full Name*</label>
-                                            <input type="text" placeholder="Full Name*" className="w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-                                        </div>
-
-                                        {/* Email ID */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Email ID*</label>
-                                            <input type="email" placeholder="Email*" className="w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-                                        </div>
-
-                                        {/* Phone Number */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Phone Number*</label>
-                                            <input type="text" placeholder="Phone Number*" className="w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-                                        </div>
-
-                                        {/* Profile Photo */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Upload Profile Photo*</label>
-                                            <div className="flex items-center gap-2 border border-gray-300 rounded-xl px-4 py-2 bg-white shadow-sm">
-                                                <input type="file" className="hidden" id="profileUpload" />
-                                                <label htmlFor="profileUpload" className="w-full text-gray-400 text-sm cursor-pointer">Upload Image*</label>
-                                                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" strokeWidth="1.5"
-                                                    viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round"
-                                                        d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12v9m0-9l-3 3m3-3l3 3m0-6h-3V4h-2v5H9l3-3 3 3z" />
-                                                </svg>
-                                            </div>
-                                        </div>
-
-                                        {/* Password */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Password*</label>
-                                            <div className="flex items-center border border-gray-300 rounded-xl px-4 py-2 shadow-sm">
-                                                <input
-                                                    type={showPassword ? 'text' : 'password'}
-                                                    placeholder="Password*"
-                                                    className="w-full border-none outline-none text-gray-700 placeholder-gray-400"
-                                                />
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setShowPassword((prev) => !prev)}
-                                                    className="focus:outline-none ml-2"
-                                                >
-                                                    <svg
-                                                        className="w-5 h-5 text-gray-500"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        strokeWidth="1.5"
-                                                        viewBox="0 0 24 24"
-                                                    >
-                                                        {showPassword ? (
-                                                            // Eye Off Icon
-                                                            <path
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                                d="M13.875 18.825A10.05 10.05 0 0112 19.5c-4.5 0-8.25-2.625-9.75-6.75a10.08 10.08 0 012.1-3.225m3.15-2.55A9.976 9.976 0 0112 4.5c4.5 0 8.25 2.625 9.75 6.75a9.978 9.978 0 01-4.5 5.325M15 12a3 3 0 11-6 0 3 3 0 016 0zm-7.5 7.5l12-12"
-                                                            />
-                                                        ) : (
-                                                            // Eye Icon
-                                                            <path
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 0c0 4-4.5 7.5-9 7.5S3 16 3 12s4.5-7.5 9-7.5 9 3.5 9 7.5z"
-                                                            />
-                                                        )}
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        {/* Confirm Password */}
-                                        <div className="mt-4">
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Confirm Password*</label>
-                                            <div className="flex items-center border border-gray-300 rounded-xl px-4 py-2 shadow-sm">
-                                                <input
-                                                    type={showConfirm ? 'text' : 'password'}
-                                                    placeholder="Confirm Password*"
-                                                    className="w-full border-none outline-none text-gray-700 placeholder-gray-400"
-                                                />
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setShowConfirm((prev) => !prev)}
-                                                    className="focus:outline-none ml-2"
-                                                >
-                                                    <svg
-                                                        className="w-5 h-5 text-gray-500"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        strokeWidth="1.5"
-                                                        viewBox="0 0 24 24"
-                                                    >
-                                                        {showConfirm ? (
-                                                            // Eye Off Icon
-                                                            <path
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                                d="M13.875 18.825A10.05 10.05 0 0112 19.5c-4.5 0-8.25-2.625-9.75-6.75a10.08 10.08 0 012.1-3.225m3.15-2.55A9.976 9.976 0 0112 4.5c4.5 0 8.25 2.625 9.75 6.75a9.978 9.978 0 01-4.5 5.325M15 12a3 3 0 11-6 0 3 3 0 016 0zm-7.5 7.5l12-12"
-                                                            />
-                                                        ) : (
-                                                            // Eye Icon
-                                                            <path
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 0c0 4-4.5 7.5-9 7.5S3 16 3 12s4.5-7.5 9-7.5 9 3.5 9 7.5z"
-                                                            />
-                                                        )}
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p className="mt-2 text-xs text-gray-600">Use at least 8 character password including uppercase, lowercase and one special character.</p>
-                                </div>
-
-                                {/* ID VERIFICATION SECTION */}
-                                <div>
-                                    <h2 className="text-lg font-semibold text-gray-800 mb-6">ID VERIFICATION</h2>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {/* Aadhar */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Upload Aadhar Card*</label>
-                                            <div className="flex items-center gap-2 border border-gray-300 rounded-xl px-4 py-2 bg-white shadow-sm">
-                                                <input type="file" className="hidden" id="aadharUpload" />
-                                                <label htmlFor="aadharUpload" className="w-full text-gray-400 text-sm cursor-pointer">Upload Image*</label>
-                                                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" strokeWidth="1.5"
-                                                    viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round"
-                                                        d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12v9m0-9l-3 3m3-3l3 3m0-6h-3V4h-2v5H9l3-3 3 3z" />
-                                                </svg>
-                                            </div>
-                                        </div>
-
-                                        {/* PAN */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Upload PAN Card*</label>
-                                            <div className="flex items-center gap-2 border border-gray-300 rounded-xl px-4 py-2 bg-white shadow-sm">
-                                                <input type="file" className="hidden" id="panUpload" />
-                                                <label htmlFor="panUpload" className="w-full text-gray-400 text-sm cursor-pointer">Upload Image*</label>
-                                                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" strokeWidth="1.5"
-                                                    viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round"
-                                                        d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12v9m0-9l-3 3m3-3l3 3m0-6h-3V4h-2v5H9l3-3 3 3z" />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button className="mt-8 px-8 py-2 rounded-full bg-gray-700 text-white hover:bg-gray-900"
-                                disabled={!roleType}
-                                onClick={() => setStep(5)}
-                            >
-
-                                NEXT
-                            </button>
-
-                            <label className="flex items-center gap-2 text-sm text-gray-700 mt-4">
-                                <input type="checkbox" className="accent-gray-700" /> I agree to our <span className="underline">PRIVACY POLICY</span> & <span className="underline">TERMS & CONDITION</span>
-                            </label>
-                        </div>
-                    </div>
-                )}
-
-                {step === 5 && (
-                    <div className="w-full min-h-screen pt-[0px] pb-0 flex flex-col md:flex-row bg-white">
-                        {/* Left Section */}
-                        <AuthLeftSide />
-
-                        {/* Right Section */}
-                        <div className="md:w-1/2 flex flex-col items-center justify-start p-6 sm:p-8">
-                            <div className="text-center mb-4">
-                                <h2 className="text-3xl font-semibold">SIGN UP</h2>
-                                <p className="text-sm text-gray-600">You already have an account? Hit the sign in button</p>
-                                <div className="flex flex-wrap gap-4 justify-center mt-3">
-                                    <button className="px-6 py-2 rounded-full bg-gray-700 text-white">Sign Up</button>
-                                    <button className="px-6 py-2 rounded-full border border-gray-400 text-gray-800" onClick={() => setStep(6)}>Sign In</button>
-                                </div>
-                            </div>
-
-                            <p className="text-center text-lg font-semibold mb-2">Documentation & Basic Details</p>
-                            <hr className="w-2/3 border-t border-gray-300 mb-6" />
-
-                            <div className="space-y-10 w-full">
-                                {/* Business Detail & ID Verification */}
-                                <div>
-                                    <h2 className="text-lg font-semibold text-gray-800 mb-6">Business Detail & ID Verification</h2>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {/* Business Name */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Business Name*</label>
-                                            <input type="text" placeholder="Business Name*" className="w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-                                        </div>
-
-                                        {/* Business Email */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Business Email ID*</label>
-                                            <input type="email" placeholder="Email*" className="w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-                                        </div>
-
-                                        {/* Business Stage */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Business Stage*</label>
-                                            <select className="w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
-                                                <option value="">Beginner</option>
-                                                <option value="">Intermediate</option>
-                                                <option value="">Advanced</option>
-                                                {/* Add actual options here */}
-                                            </select>
-                                        </div>
-
-                                        {/* Industries Stage */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Industries Stage*</label>
-                                            <select className="w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
-                                                {/* Add actual options here */}
-                                                <option value="">Beginner</option>
-                                                <option value="">Intermediate</option>
-                                                <option value="">Advanced</option>
-                                            </select>
-                                        </div>
-
-                                        {/* Upload Gumasta */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Upload Gumasta*</label>
-                                            <div className="flex items-center gap-2 border border-gray-300 rounded-xl px-4 py-2 bg-white shadow-sm">
-                                                <input type="file" className="hidden" id="gumastaUpload" />
-                                                <label htmlFor="gumastaUpload" className="w-full text-gray-400 text-sm cursor-pointer">Upload Image*</label>
-                                                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12v9m0-9l-3 3m3-3l3 3m0-6h-3V4h-2v5H9l3-3 3 3z" />
-                                                </svg>
-                                            </div>
-                                        </div>
-
-                                        {/* GSTI Number */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">GSTI Number*</label>
-                                            <input type="text" placeholder="GSTI Number*" className="w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Social Media Links & Portfolio */}
-                                <div>
-                                    <h2 className="text-lg font-semibold text-gray-800 mb-6">Social Media Links & Portfolio</h2>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {/* LinkedIn */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">LinkedIn Link* (Optional)</label>
-                                            <input type="text" placeholder="LinkedIn Link*" className="w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-                                        </div>
-
-                                        {/* Portfolio */}
-                                        <div>
-                                            <label className="block text-sm font-semibold mb-2 text-gray-700">Portfolio Link* (Optional)</label>
-                                            <input type="text" placeholder="Portfolio Link*" className="w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button className="mt-8 px-8 py-2 rounded-full bg-gray-700 text-white hover:bg-gray-900"
-                                disabled={!roleType}
-                                onClick={() => setStep(11)}
-                            >
-                                SIGN UP
-                            </button>
-
-                            <label className="flex items-center gap-2 text-sm text-gray-700 mt-4">
-                                <input type="checkbox" className="accent-gray-700" /> I agree to our <span className="underline">PRIVACY POLICY</span> & <span className="underline">TERMS & CONDITION</span>
                             </label>
                         </div>
                     </div>
@@ -1528,7 +1233,7 @@ export default function Auth() {
                                 {/* Submit Button */}
                                 <div className="flex justify-center mt-8">
                                     <button
-                                        className="px-8 py-2 rounded-full bg-[#0066FF] text-white font-semibold hover:bg-blue-700"
+                                        className="px-8 py-2 rounded-full bg-[#0066FF] text-white font-semibold hover:bg-blue-700 transition"
                                     >
                                         SIGN-UP
                                     </button>
@@ -1579,16 +1284,14 @@ export default function Auth() {
                         </div>
 
                         {/* Right Section */}
-                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 bg-white shadow-lg rounded-3xl h-screen overflow-y-auto">
-                            <div className="text-center mb-6">
-                                <h2 className="text-4xl font-bold text-blue-800">ACCELERATOR SIGN UP</h2>
-                                <p className="text-sm text-gray-500 mt-2">Already have an account? Sign in below</p>
-                                <div className="flex gap-4 justify-center mt-4 flex-wrap">
-                                    <button className="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">
-                                        Sign Up
-                                    </button>
+                        <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 h-screen overflow-y-auto">
+                            <div className="text-center mb-4">
+                                <h2 className="text-4xl font-semibold text-[#0066FF]">ACCELERATOR SIGN UP</h2>
+                                <p className="text-sm text-gray-600">Already have an account? Hit the Sign In button</p>
+                                <div className="flex gap-4 justify-center mt-3 flex-wrap">
+                                    <button className="px-6 py-2 rounded-full bg-[#0066FF] text-white text-sm hover:bg-blue-700 transition">Sign Up</button>
                                     <button
-                                        className="px-6 py-2 rounded-full border border-blue-400 text-blue-600 text-sm font-semibold hover:bg-blue-100 transition"
+                                        className="px-6 py-2 rounded-full border border-blue-600 text-blue-600 text-sm hover:bg-blue-50 transition"
                                         onClick={() => setStep(6)}
                                     >
                                         Sign In
@@ -1598,6 +1301,7 @@ export default function Auth() {
 
                             <hr className="w-2/3 border-t-2 border-blue-500 my-6" />
 
+                            {/* Form */}
                             <div className="space-y-4 w-full max-w-xl mx-auto">
                                 {/* Accelerator Name */}
                                 <div>
@@ -1814,7 +1518,7 @@ export default function Auth() {
                         {/* Right Section */}
                         <div className="md:w-1/2 md:ml-auto flex flex-col items-center justify-start p-6 sm:p-8 bg-white shadow-xl rounded-3xl h-screen overflow-y-auto">
                             <div className="text-center mb-6">
-                                <h2 className="text-3xl font-bold text-blue-800">MENTOR RESEARCHER SIGN UP</h2>
+                                <h2 className="text-4xl font-bold text-blue-800">MENTOR RESEARCHER SIGN UP</h2>
                                 <p className="text-sm text-gray-500 mt-2">Already have an account? Sign in below</p>
                                 <div className="flex gap-3 justify-center mt-4 flex-wrap">
                                     <button className="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">
