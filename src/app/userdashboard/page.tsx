@@ -17,11 +17,11 @@ interface UserData {
 
 export default function UserDashboard() {
     const router = useRouter();
-    
+
     // User data state
     const [userData, setUserData] = useState<UserData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-    
+
     // Load user data from localStorage on component mount
     useEffect(() => {
         try {
@@ -49,7 +49,7 @@ export default function UserDashboard() {
     // Section tab for tickets/matchmaking
     const [matchTab, setMatchTab] = useState('newMatch');
     const [showLogoutModal, setShowLogoutModal] = useState(false);
-    
+
     const handleLogout = () => setShowLogoutModal(true);
     const confirmLogout = () => {
         // Clear user data from localStorage
@@ -252,7 +252,13 @@ export default function UserDashboard() {
                         {/* Account Dropdown */}
                         {showAccountMenu && (
                             <div className="absolute right-0 top-16 w-60 bg-white rounded-lg shadow-lg z-20">
-                                <div className="p-3 hover:bg-gray-100 flex items-center gap-3 cursor-pointer text-gray-800">
+                                <div
+                                    className="p-3 hover:bg-gray-100 flex items-center gap-3 cursor-pointer text-gray-800"
+                                    onClick={() => {
+                                        setActiveTab("accountsettings");
+                                        setShowAccountMenu(false);
+                                    }}
+                                >
                                     <Settings size={18} /> Account Settings
                                 </div>
                                 <div className="p-3 hover:bg-gray-100 flex items-center gap-3 cursor-pointer text-gray-800">
@@ -308,6 +314,15 @@ export default function UserDashboard() {
                                 Support Ticket <span className="ml-1 text-sm text-gray-500">20</span>
                             </button>
                             <button
+                                onClick={() => setActiveTab("accountsettings")}
+                                className={`w-full text-left px-4 py-2 font-semibold rounded-lg transition-all duration-300
+            ${activeTab === "accountsettings"
+                                        ? "bg-blue-100 text-blue-600 shadow-sm"
+                                        : "text-gray-800 hover:bg-gray-100"}`}
+                            >
+                                Account Settings
+                            </button>
+                            <button
                                 onClick={handleLogout}
                                 className="w-full text-left px-4 py-2 font-semibold text-gray-800 rounded-lg hover:bg-gray-100 transition-all duration-300"
                             >
@@ -343,81 +358,7 @@ export default function UserDashboard() {
                         {/* DASHBOARD */}
                         {activeTab === "dashboard" && (
                             <>
-                                {/* User Profile Section */}
-                                {isLoading ? (
-                                    <div className="bg-white p-6 rounded-md shadow mb-6">
-                                        <div className="animate-pulse">
-                                            <div className="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
-                                            <div className="h-3 bg-gray-200 rounded w-1/2 mb-2"></div>
-                                            <div className="h-3 bg-gray-200 rounded w-1/3"></div>
-                                        </div>
-                                    </div>
-                                ) : userData ? (
-                                    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-md shadow mb-6 border border-blue-200">
-                                        <div className="flex items-start justify-between">
-                                            <div className="flex-1">
-                                                <h2 className="text-xl font-bold text-gray-900 mb-2">
-                                                    Welcome, {userData.formData.name || 'User'}! 👋
-                                                </h2>
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                                                    <div>
-                                                        <span className="font-semibold text-gray-700">Role:</span>
-                                                        <span className="ml-2 bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
-                                                            {userData.role.charAt(0).toUpperCase() + userData.role.slice(1)}
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <span className="font-semibold text-gray-700">Wallet:</span>
-                                                        <span className="ml-2 text-gray-600 font-mono text-xs">
-                                                            {userData.walletAddress.slice(0, 8)}...{userData.walletAddress.slice(-8)}
-                                                        </span>
-                                                    </div>
-                                                    {userData.profilePDA && (
-                                                        <div>
-                                                            <span className="font-semibold text-gray-700">Profile PDA:</span>
-                                                            <span className="ml-2 text-gray-600 font-mono text-xs">
-                                                                {userData.profilePDA.slice(0, 8)}...{userData.profilePDA.slice(-8)}
-                                                            </span>
-                                                        </div>
-                                                    )}
-                                                    <div>
-                                                        <span className="font-semibold text-gray-700">Joined:</span>
-                                                        <span className="ml-2 text-gray-600">
-                                                            {new Date(userData.signupTimestamp).toLocaleDateString()}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                {userData.signature && (
-                                                    <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-                                                        <div className="flex items-center">
-                                                            <svg className="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                                            </svg>
-                                                            <span className="text-green-800 text-sm font-medium">Profile verified on blockchain</span>
-                                                        </div>
-                                                        <div className="text-xs text-green-600 mt-1 font-mono">
-                                                            TX: {userData.signature.slice(0, 12)}...{userData.signature.slice(-12)}
-                                                        </div>
-                                                    </div>
-                                                )}
-                                            </div>
-                                            <div className="ml-4">
-                                                <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full flex items-center justify-center text-white text-xl font-bold">
-                                                    {(userData.formData.name || 'U').charAt(0).toUpperCase()}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 p-4 rounded-lg mb-6">
-                                        <div className="flex items-center">
-                                            <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                                            </svg>
-                                            <span className="font-medium">No user data found. Please sign up to access your dashboard.</span>
-                                        </div>
-                                    </div>
-                                )}
+
 
                                 {/* Header Cards */}
                                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6 mt-15">
@@ -1146,8 +1087,214 @@ export default function UserDashboard() {
                                             </div>
                                         </div>
                                     )}
+
                                 </div>
                             </>
+                        )}
+                        {activeTab === "accountsettings" && (
+                            <div className="space-y-6 mt-12">
+                                {/* Page Header */}
+                                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
+                                    <h1 className="text-2xl font-bold text-gray-800 mb-2">Account Settings</h1>
+                                    <p className="text-gray-600">Manage your blockchain profile and view your stored data</p>
+                                </div>
+
+                                {isLoading ? (
+                                    <div className="bg-white p-6 rounded-lg shadow">
+                                        <div className="animate-pulse space-y-4">
+                                            <div className="h-4 bg-gray-200 rounded w-1/4"></div>
+                                            <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                                            <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                                        </div>
+                                    </div>
+                                ) : userData ? (
+                                    <>
+                                        {/* Blockchain Information */}
+                                        <div className="bg-white p-6 rounded-lg shadow">
+                                            <h2 className="text-xl font-semibold text-[#1f2937] mb-4 flex items-center">
+                                                <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm mr-3">⛓️</span>
+                                                Blockchain Information
+                                            </h2>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div className="space-y-4">
+                                                    <div>
+                                                        <label className="block text-sm font-semibold text-[#111827] mb-1">Wallet Address</label>
+                                                        <div className="p-3 bg-gray-100 rounded-lg border font-mono text-sm text-[#1f2937]">
+                                                            {userData.walletAddress}
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-sm font-semibold text-[#111827] mb-1">Profile PDA</label>
+                                                        <div className="p-3 bg-gray-100 rounded-lg border font-mono text-sm text-[#1f2937]">
+                                                            {userData.profilePDA || 'Not available'}
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-sm font-semibold text-[#111827] mb-1">IPFS CID</label>
+                                                        <div className="p-3 bg-gray-100 rounded-lg border font-mono text-sm text-[#1f2937]">
+                                                            {userData.cid || 'Not available'}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="space-y-4">
+                                                    <div>
+                                                        <label className="block text-sm font-semibold text-[#111827] mb-1">Transaction Signature</label>
+                                                        <div className="p-3 bg-gray-100 rounded-lg border font-mono text-sm break-all text-[#1f2937]">
+                                                            {userData.signature || 'Not available'}
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-sm font-semibold text-[#111827] mb-1">Role</label>
+                                                        <div className="p-3 bg-blue-100 rounded-lg border">
+                                                            <span className="inline-block px-3 py-1 bg-blue-700 text-white rounded-full text-sm font-semibold capitalize">
+                                                                {userData.role}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-sm font-semibold text-[#111827] mb-1">Role Type</label>
+                                                        <div className="p-3 bg-green-100 rounded-lg border">
+                                                            <span className="inline-block px-3 py-1 bg-green-700 text-white rounded-full text-sm font-semibold">
+                                                                {userData.roleType || 'Not specified'}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-sm font-semibold text-[#111827] mb-1">Signup Date</label>
+                                                        <div className="p-3 bg-gray-100 rounded-lg border text-[#1f2937]">
+                                                            {new Date(userData.signupTimestamp).toLocaleDateString('en-US', {
+                                                                year: 'numeric',
+                                                                month: 'long',
+                                                                day: 'numeric',
+                                                                hour: '2-digit',
+                                                                minute: '2-digit'
+                                                            })}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        {/* Profile Information */}
+                                        <div className="bg-white p-6 rounded-lg shadow">
+                                            <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                                <span className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-white text-sm mr-3">👤</span>
+                                                Profile Information
+                                            </h2>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                                {Object.entries(userData.formData).map(([key, value]) => (
+                                                    <div key={key} className="space-y-1">
+                                                        <label className="block text-sm font-medium text-gray-700 capitalize">
+                                                            {key.replace(/([A-Z])/g, ' $1').toLowerCase()}
+                                                        </label>
+                                                        <div className="p-3 bg-gray-50 rounded-lg border min-h-[2.5rem] flex items-center">
+                                                            <span className="text-sm text-gray-800">
+                                                                {Array.isArray(value) ? value.join(', ') : value || 'Not provided'}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        {/* Account Actions */}
+                                        <div className="bg-white p-6 rounded-lg shadow">
+                                            <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                                <span className="w-6 h-6 bg-orange-600 rounded-full flex items-center justify-center text-white text-sm mr-3">⚙️</span>
+                                                Account Actions
+                                            </h2>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                                <button
+                                                    className="p-4 border border-blue-200 rounded-lg hover:bg-blue-50 transition-colors"
+                                                    onClick={() => {
+                                                        if (userData.signature) {
+                                                            window.open(`https://explorer.solana.com/tx/${userData.signature}?cluster=devnet`, '_blank');
+                                                        }
+                                                    }}
+                                                >
+                                                    <div className="text-blue-600 font-semibold mb-2">View on Blockchain</div>
+                                                    <div className="text-sm text-gray-600">View your transaction on Solana Explorer</div>
+                                                </button>
+
+                                                <button
+                                                    className="p-4 border border-green-200 rounded-lg hover:bg-green-50 transition-colors"
+                                                    onClick={() => {
+                                                        if (userData.cid) {
+                                                            window.open(`https://gateway.pinata.cloud/ipfs/${userData.cid}`, '_blank');
+                                                        }
+                                                    }}
+                                                >
+                                                    <div className="text-green-600 font-semibold mb-2">View IPFS Data</div>
+                                                    <div className="text-sm text-gray-600">View your data on IPFS network</div>
+                                                </button>
+
+                                                <button
+                                                    className="p-4 border border-purple-200 rounded-lg hover:bg-purple-50 transition-colors"
+                                                    onClick={() => {
+                                                        const dataToExport = {
+                                                            ...userData,
+                                                            exportedAt: new Date().toISOString()
+                                                        };
+                                                        const blob = new Blob([JSON.stringify(dataToExport, null, 2)], { type: 'application/json' });
+                                                        const url = URL.createObjectURL(blob);
+                                                        const a = document.createElement('a');
+                                                        a.href = url;
+                                                        a.download = `lokachakra-profile-${userData.walletAddress.slice(0, 8)}.json`;
+                                                        a.click();
+                                                        URL.revokeObjectURL(url);
+                                                    }}
+                                                >
+                                                    <div className="text-purple-600 font-semibold mb-2">Export Data</div>
+                                                    <div className="text-sm text-gray-600">Download your profile data as JSON</div>
+                                                </button>
+
+                                                <button
+                                                    className="p-4 border border-red-200 rounded-lg hover:bg-red-50 transition-colors"
+                                                    onClick={() => {
+                                                        const confirmed = window.confirm('Are you sure you want to clear local data? This will log you out and you\'ll need to sign up again.');
+                                                        if (confirmed) {
+                                                            localStorage.removeItem('lokachakra_user');
+                                                            router.push('/auth');
+                                                        }
+                                                    }}
+                                                >
+                                                    <div className="text-red-600 font-semibold mb-2">Clear Local Data</div>
+                                                    <div className="text-sm text-gray-600">Remove data from this browser</div>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {/* Raw Data View (Developer Mode) */}
+                                        <div className="bg-white p-6 rounded-lg shadow">
+                                            <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                                <span className="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center text-white text-sm mr-3">💻</span>
+                                                Raw Data (Developer View)
+                                            </h2>
+                                            <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+                                                <pre>{JSON.stringify(userData, null, 2)}</pre>
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 p-6 rounded-lg">
+                                        <div className="flex items-center">
+                                            <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                            </svg>
+                                            <span className="font-medium">No user data found. Please sign up to access your account settings.</span>
+                                        </div>
+                                        <div className="mt-4">
+                                            <button
+                                                onClick={() => router.push('/auth?step=1')}
+                                                className="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors"
+                                            >
+                                                Go to Sign Up
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         )}
                     </div>
                 </div>
