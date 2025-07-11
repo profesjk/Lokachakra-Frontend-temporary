@@ -12,7 +12,36 @@ import {
 
 // Configuration
 const PROGRAM_ID = new PublicKey("Cb2kAL6pdTpEVhmXiZ7kiJ2jttHXfMoJA4tbZiiCZyjF");
-const connection = new Connection("http://127.0.0.1:8899"); // Update this for production
+
+// Multiple RPC endpoints for redundancy
+const RPC_ENDPOINTS = [
+    'https://api.devnet.solana.com',
+    'https://devnet.helius-rpc.com/?api-key=public',
+    'https://rpc.ankr.com/solana_devnet'
+];
+
+// Try multiple connections until one works
+let connection;
+let currentEndpointIndex = 0;
+
+async function getWorkingConnection() {
+    for (let i = 0; i < RPC_ENDPOINTS.length; i++) {
+        try {
+            const testConnection = new Connection(RPC_ENDPOINTS[i], 'confirmed');
+            // Test the connection
+            await testConnection.getLatestBlockhash();
+            console.log('✅ Connected to Solana RPC:', RPC_ENDPOINTS[i]);
+            return testConnection;
+        } catch (error) {
+            console.warn(`❌ Failed to connect to ${RPC_ENDPOINTS[i]}:`, error.message);
+            continue;
+        }
+    }
+    throw new Error('All Solana RPC endpoints are unavailable');
+}
+
+// Initialize connection
+connection = new Connection(RPC_ENDPOINTS[0], 'confirmed');
 
 // Utility functions
 function serializeString(str) {
@@ -143,91 +172,133 @@ async function getCidFromUser(user) {
 }
 
 async function uploadDataToBlockchain(cid, userWalletPublicKey, role) {
-    try {
-        // Create a new keypair for the transaction (you might want to use the user's wallet instead)
-        const keypair = Keypair.generate();
-        
-        // Create UserRoles object based on the role
-        const userRoles = createUserRoles(role);
-        
-        // Serialize data
-        const serializedData = serializeCreateProfileData(cid, userRoles);
-        
-        // Create instruction data with discriminator
-        const instructionData = Buffer.concat([
-            Buffer.from([0]), // Instruction discriminator for CreateProfile
-            serializedData
-        ]);
-        
-        // Derive the profile PDA
-        const [profilePDA] = await PublicKey.findProgramAddress(
-            [Buffer.from("profile"), keypair.publicKey.toBuffer()],
-            PROGRAM_ID
-        );
-        
-        // Create the instruction
-        const instruction = new TransactionInstruction({
-            keys: [
-                {
-                    pubkey: keypair.publicKey,
-                    isSigner: true,
-                    isWritable: true,
-                },
-                {
-                    pubkey: profilePDA,
-                    isSigner: false,
-                    isWritable: true,
-                },
-                {
-                    pubkey: SystemProgram.programId,
-                    isSigner: false,
-                    isWritable: false,
-                },
-            ],
-            programId: PROGRAM_ID,
-            data: instructionData,
-        });
-        
-        // Create and send transaction
-        const transaction = new Transaction().add(instruction);
-        
-        // Get recent blockhash
-        const { blockhash } = await connection.getLatestBlockhash();
-        transaction.recentBlockhash = blockhash;
-        transaction.feePayer = keypair.publicKey;
-        
-        // For development, we'll need to airdrop some SOL to the keypair
+    let retries = 0;
+    const maxRetries = 3;
+    
+    while (retries < maxRetries) {
         try {
-            await connection.requestAirdrop(keypair.publicKey, 2 * LAMPORTS_PER_SOL);
-            // Wait a bit for the airdrop to complete
-            await new Promise(resolve => setTimeout(resolve, 3000));
-        } catch (airdropError) {
-            console.warn("Airdrop failed:", airdropError);
-        }
-        
-        // Sign and send transaction
-        const signature = await sendAndConfirmTransaction(
-            connection,
-            transaction,
-            [keypair],
-            {
-                commitment: 'confirmed',
-                maxRetries: 3,
+            console.log(`🔗 Attempting blockchain upload (attempt ${retries + 1}/${maxRetries})`);
+            
+            // Get a working connection
+            if (retries > 0) {
+                console.log('🔄 Trying alternative RPC endpoint...');
+                connection = await getWorkingConnection();
             }
-        );
-        
-        return {
-            signature,
-            profilePDA: profilePDA.toString(),
-            role,
-            cid,
-            walletAddress: userWalletPublicKey
-        };
-        
-    } catch (error) {
-        console.error("Error uploading to blockchain:", error);
-        throw error;
+            
+            // Create a new keypair for the transaction (you might want to use the user's wallet instead)
+            const keypair = Keypair.generate();
+            
+            // Create UserRoles object based on the role
+            const userRoles = createUserRoles(role);
+            
+            // Serialize data
+            const serializedData = serializeCreateProfileData(cid, userRoles);
+            
+            // Create instruction data with discriminator
+            const instructionData = Buffer.concat([
+                Buffer.from([0]), // Instruction discriminator for CreateProfile
+                serializedData
+            ]);
+            
+            // Derive the profile PDA
+            const [profilePDA] = await PublicKey.findProgramAddress(
+                [Buffer.from("profile"), keypair.publicKey.toBuffer()],
+                PROGRAM_ID
+            );
+            
+            // Create the instruction
+            const instruction = new TransactionInstruction({
+                keys: [
+                    {
+                        pubkey: keypair.publicKey,
+                        isSigner: true,
+                        isWritable: true,
+                    },
+                    {
+                        pubkey: profilePDA,
+                        isSigner: false,
+                        isWritable: true,
+                    },
+                    {
+                        pubkey: SystemProgram.programId,
+                        isSigner: false,
+                        isWritable: false,
+                    },
+                ],
+                programId: PROGRAM_ID,
+                data: instructionData,
+            });
+            
+            // Create and send transaction
+            const transaction = new Transaction().add(instruction);
+            
+            // Get recent blockhash with timeout
+            console.log('📡 Getting recent blockhash from Solana devnet...');
+            const { blockhash } = await Promise.race([
+                connection.getLatestBlockhash('confirmed'),
+                new Promise((_, reject) => 
+                    setTimeout(() => reject(new Error('Blockhash timeout')), 10000)
+                )
+            ]);
+            console.log('✅ Got blockhash:', blockhash);
+            
+            transaction.recentBlockhash = blockhash;
+            transaction.feePayer = keypair.publicKey;
+            
+            // For development, we'll need to airdrop some SOL to the keypair
+            try {
+                console.log('💰 Requesting SOL airdrop for transaction fees...');
+                await connection.requestAirdrop(keypair.publicKey, 2 * LAMPORTS_PER_SOL);
+                // Wait a bit for the airdrop to complete
+                await new Promise(resolve => setTimeout(resolve, 3000));
+                console.log('✅ Airdrop completed');
+            } catch (airdropError) {
+                console.warn("Airdrop failed:", airdropError);
+                // Continue anyway, user might already have some SOL
+            }
+            
+            // Sign and send transaction
+            console.log('📝 Signing and sending transaction...');
+            const signature = await sendAndConfirmTransaction(
+                connection,
+                transaction,
+                [keypair],
+                {
+                    commitment: 'confirmed',
+                    maxRetries: 3,
+                }
+            );
+            console.log('✅ Transaction confirmed with signature:', signature);
+            
+            return {
+                signature,
+                profilePDA: profilePDA.toString(),
+                role,
+                cid,
+                walletAddress: userWalletPublicKey
+            };
+            
+        } catch (error) {
+            console.error(`❌ Blockchain upload attempt ${retries + 1} failed:`, error);
+            retries++;
+            
+            if (retries >= maxRetries) {
+                // If all retries failed, throw a more user-friendly error
+                if (error.message.includes('fetch failed') || error.message.includes('timeout')) {
+                    throw new Error('Network connection failed. Please check your internet connection and try again.');
+                } else if (error.message.includes('blockhash')) {
+                    throw new Error('Solana network is currently unavailable. Please try again in a few moments.');
+                } else {
+                    throw new Error(`Blockchain operation failed: ${error.message}`);
+                }
+            }
+            
+            // Wait before retrying
+            await new Promise(resolve => setTimeout(resolve, 2000 * retries));
+        }
     }
+    
+    throw new Error('Maximum retries exceeded. Please try again later.');
 }
 
 export async function POST(request) {
@@ -251,12 +322,19 @@ export async function POST(request) {
                 { status: 400 }
             );
         }
+
+        console.log('🚀 Starting signup process for role:', role);
+        console.log('👤 Wallet address:', walletAddress);
         
         // Upload user data to IPFS
+        console.log('📤 Uploading user data to IPFS...');
         const cid = await getCidFromUser(user);
+        console.log('✅ IPFS upload successful, CID:', cid);
         
         // Upload to Solana blockchain
+        console.log('⛓️ Starting blockchain upload...');
         const result = await uploadDataToBlockchain(cid, walletAddress, role);
+        console.log('✅ Signup process completed successfully!');
         
         return NextResponse.json({ 
             success: true, 
@@ -266,12 +344,33 @@ export async function POST(request) {
         
     } catch (error) {
         console.error("API Error:", error);
+        
+        // Provide more specific error messages
+        let errorMessage = 'Internal server error';
+        let statusCode = 500;
+        
+        if (error.message.includes('Network connection failed')) {
+            errorMessage = error.message;
+            statusCode = 503; // Service Unavailable
+        } else if (error.message.includes('Solana network is currently unavailable')) {
+            errorMessage = error.message;
+            statusCode = 503; // Service Unavailable
+        } else if (error.message.includes('Pinata')) {
+            errorMessage = 'Failed to store data. Please try again.';
+            statusCode = 502; // Bad Gateway
+        } else if (error.message.includes('Maximum retries exceeded')) {
+            errorMessage = 'Service is temporarily unavailable. Please try again in a few minutes.';
+            statusCode = 503; // Service Unavailable
+        } else {
+            errorMessage = error.message || 'An unexpected error occurred';
+        }
+        
         return NextResponse.json(
             { 
                 success: false, 
-                error: error.message || 'Internal server error' 
+                error: errorMessage
             }, 
-            { status: 500 }
+            { status: statusCode }
         );
     }
 }

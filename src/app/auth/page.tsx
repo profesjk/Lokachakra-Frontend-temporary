@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useWallet } from '@solana/wallet-adapter-react';
 import ChatBot from '../sections/ChatBot';
 
@@ -385,6 +386,7 @@ function FormField({ field, value, onChange }: FormFieldProps) {
 }
 
 export default function Auth() {
+    const router = useRouter();
     const [step, setStep] = useState(1);
     const [role, setRole] = useState('');
     const [roleType, setRoleType] = useState('');
@@ -483,9 +485,25 @@ export default function Auth() {
             console.log('✅ Blockchain signup successful:', result);
             
             setSubmitSuccess(true);
+            
+            // Store user data in localStorage for user dashboard
+            const userData = {
+                role: role,
+                roleType: roleType,
+                walletAddress: publicKey.toBase58(),
+                profilePDA: result.data?.profilePDA,
+                signature: result.data?.signature,
+                cid: result.data?.cid,
+                formData: formData,
+                signupTimestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('lokachakra_user', JSON.stringify(userData));
+            
             setTimeout(() => {
                 setSubmitSuccess(false);
-                setStep(6); // Redirect to sign in
+                // Redirect to user dashboard instead of sign in
+                router.push('/userdashboard');
             }, 3000);
 
         } catch (error) {
@@ -659,7 +677,7 @@ export default function Auth() {
                                             </svg>
                                             Success!
                                         </div>
-                                        <p>Your account has been created successfully. Redirecting to sign in...</p>
+                                        <p>Your account has been created successfully and stored on the blockchain! Redirecting to your dashboard...</p>
                                     </div>
                                 )}
 

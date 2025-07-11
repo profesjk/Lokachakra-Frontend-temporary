@@ -1,18 +1,59 @@
 "use client";
 import Image from "next/image";
 import { Bell, ChevronDown, Settings, Globe, Sliders, Accessibility, LogOut } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
+interface UserData {
+    role: string;
+    roleType: string;
+    walletAddress: string;
+    profilePDA?: string;
+    signature?: string;
+    cid?: string;
+    formData: Record<string, string>;
+    signupTimestamp: string;
+}
+
 export default function UserDashboard() {
+    const router = useRouter();
+    
+    // User data state
+    const [userData, setUserData] = useState<UserData | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    
+    // Load user data from localStorage on component mount
+    useEffect(() => {
+        try {
+            const storedData = localStorage.getItem('lokachakra_user');
+            if (storedData) {
+                const parsed = JSON.parse(storedData);
+                setUserData(parsed);
+            } else {
+                // No user data found, redirect to auth
+                router.push('/auth?step=1');
+                return;
+            }
+        } catch (error) {
+            console.error('Error loading user data:', error);
+            // On error, redirect to auth
+            router.push('/auth?step=1');
+            return;
+        } finally {
+            setIsLoading(false);
+        }
+    }, [router]);
+
     // Sidebar active tab
     const [activeTab, setActiveTab] = useState("dashboard");
     // Section tab for tickets/matchmaking
     const [matchTab, setMatchTab] = useState('newMatch');
     const [showLogoutModal, setShowLogoutModal] = useState(false);
-    const router = useRouter();
+    
     const handleLogout = () => setShowLogoutModal(true);
     const confirmLogout = () => {
+        // Clear user data from localStorage
+        localStorage.removeItem('lokachakra_user');
         setShowLogoutModal(false);
         router.push('/auth');
     };
@@ -179,17 +220,26 @@ export default function UserDashboard() {
                                 </div>
                             )}
                         </div>
-                        {/* Admin Email */}
-                        <span className="text-gray-800 font-semibold">ADMIN@LOKACHAKRA.IN</span>
+                        {/* User Info */}
+                        <div className="text-right">
+                            <div className="text-gray-800 font-semibold text-sm">
+                                {userData ? (userData.formData.name || 'User') : 'USER@LOKACHAKRA.IN'}
+                            </div>
+                            {userData && (
+                                <div className="text-gray-500 text-xs font-mono">
+                                    {userData.walletAddress.slice(0, 6)}...{userData.walletAddress.slice(-4)}
+                                </div>
+                            )}
+                        </div>
                         {/* User Icon */}
                         <div
-                            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 cursor-pointer"
+                            className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 cursor-pointer text-white font-bold"
                             onClick={() => {
                                 setShowAccountMenu(!showAccountMenu);
                                 setShowNotifications(false);
                             }}
                         >
-                            <Image src="/lokachakra-logo.png" alt="User Icon" width={24} height={24} />
+                            {userData ? (userData.formData.name || 'U').charAt(0).toUpperCase() : 'U'}
                         </div>
                         <ChevronDown
                             size={24}
@@ -293,6 +343,82 @@ export default function UserDashboard() {
                         {/* DASHBOARD */}
                         {activeTab === "dashboard" && (
                             <>
+                                {/* User Profile Section */}
+                                {isLoading ? (
+                                    <div className="bg-white p-6 rounded-md shadow mb-6">
+                                        <div className="animate-pulse">
+                                            <div className="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
+                                            <div className="h-3 bg-gray-200 rounded w-1/2 mb-2"></div>
+                                            <div className="h-3 bg-gray-200 rounded w-1/3"></div>
+                                        </div>
+                                    </div>
+                                ) : userData ? (
+                                    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-md shadow mb-6 border border-blue-200">
+                                        <div className="flex items-start justify-between">
+                                            <div className="flex-1">
+                                                <h2 className="text-xl font-bold text-gray-900 mb-2">
+                                                    Welcome, {userData.formData.name || 'User'}! 👋
+                                                </h2>
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                                    <div>
+                                                        <span className="font-semibold text-gray-700">Role:</span>
+                                                        <span className="ml-2 bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
+                                                            {userData.role.charAt(0).toUpperCase() + userData.role.slice(1)}
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <span className="font-semibold text-gray-700">Wallet:</span>
+                                                        <span className="ml-2 text-gray-600 font-mono text-xs">
+                                                            {userData.walletAddress.slice(0, 8)}...{userData.walletAddress.slice(-8)}
+                                                        </span>
+                                                    </div>
+                                                    {userData.profilePDA && (
+                                                        <div>
+                                                            <span className="font-semibold text-gray-700">Profile PDA:</span>
+                                                            <span className="ml-2 text-gray-600 font-mono text-xs">
+                                                                {userData.profilePDA.slice(0, 8)}...{userData.profilePDA.slice(-8)}
+                                                            </span>
+                                                        </div>
+                                                    )}
+                                                    <div>
+                                                        <span className="font-semibold text-gray-700">Joined:</span>
+                                                        <span className="ml-2 text-gray-600">
+                                                            {new Date(userData.signupTimestamp).toLocaleDateString()}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                {userData.signature && (
+                                                    <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+                                                        <div className="flex items-center">
+                                                            <svg className="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                                            </svg>
+                                                            <span className="text-green-800 text-sm font-medium">Profile verified on blockchain</span>
+                                                        </div>
+                                                        <div className="text-xs text-green-600 mt-1 font-mono">
+                                                            TX: {userData.signature.slice(0, 12)}...{userData.signature.slice(-12)}
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="ml-4">
+                                                <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full flex items-center justify-center text-white text-xl font-bold">
+                                                    {(userData.formData.name || 'U').charAt(0).toUpperCase()}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 p-4 rounded-lg mb-6">
+                                        <div className="flex items-center">
+                                            <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                            </svg>
+                                            <span className="font-medium">No user data found. Please sign up to access your dashboard.</span>
+                                        </div>
+                                    </div>
+                                )}
+
                                 {/* Header Cards */}
                                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6 mt-15">
                                     {[...Array(5)].map((_, idx) => (
