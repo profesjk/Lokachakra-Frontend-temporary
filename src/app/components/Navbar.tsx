@@ -5,12 +5,15 @@ import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showWalletModal, setShowWalletModal] = useState(false);
   const router = useRouter();
+  const { publicKey, connected, disconnect } = useWallet();
 
-  // All hrefs should start with "/" for absolute navigation
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'About Us', href: '/aboutus' },
@@ -22,10 +25,22 @@ const Navbar = () => {
     { label: 'Contact Us', href: '/contactus' },
   ];
 
-  // Handler for auth navigation with step
-  const handleAuth = (step: number) => {
+  const handleAuth = (step) => {
+    if (!connected) {
+      alert('Please connect your wallet first to get started!');
+      return;
+    }
     setIsOpen(false);
     router.push(`/auth?step=${step}`);
+  };
+
+  const getShortAddress = (address) => {
+    return `${address.slice(0, 4)}...${address.slice(-4)}`;
+  };
+
+  const handleDisconnect = () => {
+    disconnect();
+    setShowWalletModal(false);
   };
 
   return (
@@ -59,23 +74,44 @@ const Navbar = () => {
           </nav>
 
           {/* Buttons */}
-          <div className="hidden md:flex space-x-4">
+          <div className="hidden md:flex space-x-4 items-center">
+            {/* Get Started Button */}
             <button
               type="button"
-              className="bg-white text-[#0066FF] px-5 py-2 rounded-full text-sm font-medium border-2 border-[#0066FF] transition-all duration-200 hover:bg-[#0066FF] hover:text-white"
-              onClick={() => handleAuth(6)}
-            >
-              Sign In
-            </button>
-            <button
-              type="button"
-              className="bg-white text-[#0066FF] px-5 py-2 rounded-full text-sm font-medium border-2 border-[#0066FF] transition-all duration-200 hover:bg-[#0066FF] hover:text-white"
+              className={`px-5 py-2 rounded-full text-sm font-medium border-2 transition-all duration-200 ${
+                connected 
+                  ? 'bg-white text-[#0066FF] border-[#0066FF] hover:bg-[#0066FF] hover:text-white'
+                  : 'bg-gray-300 text-gray-500 border-gray-300 cursor-not-allowed'
+              }`}
               onClick={() => handleAuth(1)}
+              disabled={!connected}
             >
-              Sign Up
+              Get Started
             </button>
-          </div>
 
+            {/* Wallet Button */}
+            {connected && publicKey ? (
+              <button
+                type="button"
+                className="px-5 py-2 rounded-full text-sm font-medium border-2 border-[#00C6FF] text-[#0066FF] bg-gradient-to-r from-[#00C6FF] to-[#0072FF] text-white hover:from-[#0072FF] hover:to-[#00C6FF] transition-all duration-200"
+                onClick={() => setShowWalletModal(!showWalletModal)}
+              >
+                {getShortAddress(publicKey.toBase58())}
+              </button>
+            ) : (
+              <WalletMultiButton 
+                style={{
+                  background: 'linear-gradient(135deg, #00C6FF 0%, #0072FF 100%)',
+                  borderRadius: '9999px',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  padding: '8px 20px',
+                  height: '40px',
+                  minHeight: '40px'
+                }}
+              />
+            )}
+          </div>
 
           {/* Hamburger */}
           <div className="md:hidden">
@@ -99,26 +135,72 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="flex flex-col space-y-2 px-4">
+              {/* Wallet Button for Mobile */}
+              {connected && publicKey ? (
+                <button
+                  type="button"
+                  className="px-5 py-2 rounded-full text-sm font-medium border-2 border-[#00C6FF] text-[#0066FF] bg-gradient-to-r from-[#00C6FF] to-[#0072FF] text-white hover:from-[#0072FF] hover:to-[#00C6FF] transition-all duration-200"
+                  onClick={() => setShowWalletModal(!showWalletModal)}
+                >
+                  {getShortAddress(publicKey.toBase58())}
+                </button>
+              ) : (
+                <WalletMultiButton 
+                  style={{
+                    background: 'linear-gradient(135deg, #00C6FF 0%, #0072FF 100%)',
+                    borderRadius: '9999px',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    padding: '8px 20px',
+                    width: '100%',
+                    height: '40px',
+                    minHeight: '40px'
+                  }}
+                />
+              )}
+
+              {/* Get Started */}
               <button
                 type="button"
-                className="bg-[#0066FF] text-white px-5 py-2 rounded-full text-sm font-medium border-2 border-[#0066FF] transition-all duration-200 hover:bg-white hover:text-[#0066FF]"
+                className={`px-5 py-2 rounded-full text-sm font-medium border-2 transition-all duration-200 ${
+                  connected 
+                    ? 'bg-[#0066FF] text-white border-[#0066FF] hover:bg-white hover:text-[#0066FF]'
+                    : 'bg-gray-300 text-gray-500 border-gray-300 cursor-not-allowed'
+                }`}
                 onClick={() => handleAuth(1)}
+                disabled={!connected}
               >
-                Sign In
-              </button>
-              <button
-                type="button"
-                className="bg-[#0066FF] text-white px-5 py-2 rounded-full text-sm font-medium border-2 border-[#0066FF] transition-all duration-200 hover:bg-white hover:text-[#0066FF]"
-                onClick={() => handleAuth(1)}
-              >
-                Sign Up
+                Get Started
               </button>
             </div>
           </div>
         )}
       </div>
-    </header>
 
+      {/* Wallet Popup */}
+      {showWalletModal && connected && publicKey && (
+        <div className="absolute top-24 right-8 bg-white rounded-xl shadow-lg border border-gray-200 z-50">
+          <div className="p-4 w-64 relative">
+            <button
+              type="button"
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              onClick={() => setShowWalletModal(false)}
+            >
+              <X size={18} />
+            </button>
+            <h2 className="text-base font-bold text-gray-800 mb-2">Wallet Connected</h2>
+            <p className="text-gray-600 text-sm mb-4 break-words">{publicKey.toBase58()}</p>
+            <button
+              type="button"
+              className="w-full bg-[#FF3B30] text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:bg-red-600"
+              onClick={handleDisconnect}
+            >
+              Disconnect Wallet
+            </button>
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 
