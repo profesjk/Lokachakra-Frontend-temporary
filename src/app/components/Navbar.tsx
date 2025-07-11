@@ -1,18 +1,30 @@
 // components/Navbar.jsx
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import dynamic from 'next/dynamic';
+
+// Dynamically import WalletMultiButton with SSR disabled
+const WalletMultiButton = dynamic(
+  () => import('@solana/wallet-adapter-react-ui').then((mod) => mod.WalletMultiButton),
+  { ssr: false }
+);
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showWalletModal, setShowWalletModal] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const { publicKey, connected, disconnect } = useWallet();
+
+  // Ensure component is mounted before rendering wallet components
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navLinks = [
     { label: 'Home', href: '/' },
@@ -25,7 +37,7 @@ const Navbar = () => {
     { label: 'Contact Us', href: '/contactus' },
   ];
 
-  const handleAuth = (step) => {
+  const handleAuth = (step: number) => {
     if (!connected) {
       alert('Please connect your wallet first to get started!');
       return;
@@ -34,7 +46,7 @@ const Navbar = () => {
     router.push(`/auth?step=${step}`);
   };
 
-  const getShortAddress = (address) => {
+  const getShortAddress = (address: string) => {
     return `${address.slice(0, 4)}...${address.slice(-4)}`;
   };
 
@@ -90,26 +102,30 @@ const Navbar = () => {
             </button>
 
             {/* Wallet Button */}
-            {connected && publicKey ? (
-              <button
-                type="button"
-                className="px-5 py-2 rounded-full text-sm font-medium border-2 border-[#00C6FF] text-[#0066FF] bg-gradient-to-r from-[#00C6FF] to-[#0072FF] text-white hover:from-[#0072FF] hover:to-[#00C6FF] transition-all duration-200"
-                onClick={() => setShowWalletModal(!showWalletModal)}
-              >
-                {getShortAddress(publicKey.toBase58())}
-              </button>
-            ) : (
-              <WalletMultiButton 
-                style={{
-                  background: 'linear-gradient(135deg, #00C6FF 0%, #0072FF 100%)',
-                  borderRadius: '9999px',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  padding: '8px 20px',
-                  height: '40px',
-                  minHeight: '40px'
-                }}
-              />
+            {mounted && (
+              <>
+                {connected && publicKey ? (
+                  <button
+                    type="button"
+                    className="px-5 py-2 rounded-full text-sm font-medium border-2 border-[#00C6FF] text-[#0066FF] bg-gradient-to-r from-[#00C6FF] to-[#0072FF] text-white hover:from-[#0072FF] hover:to-[#00C6FF] transition-all duration-200"
+                    onClick={() => setShowWalletModal(!showWalletModal)}
+                  >
+                    {getShortAddress(publicKey.toBase58())}
+                  </button>
+                ) : (
+                  <WalletMultiButton 
+                    style={{
+                      background: 'linear-gradient(135deg, #00C6FF 0%, #0072FF 100%)',
+                      borderRadius: '9999px',
+                      fontSize: '14px',
+                      fontWeight: '500',
+                      padding: '8px 20px',
+                      height: '40px',
+                      minHeight: '40px'
+                    }}
+                  />
+                )}
+              </>
             )}
           </div>
 
@@ -136,27 +152,31 @@ const Navbar = () => {
             ))}
             <div className="flex flex-col space-y-2 px-4">
               {/* Wallet Button for Mobile */}
-              {connected && publicKey ? (
-                <button
-                  type="button"
-                  className="px-5 py-2 rounded-full text-sm font-medium border-2 border-[#00C6FF] text-[#0066FF] bg-gradient-to-r from-[#00C6FF] to-[#0072FF] text-white hover:from-[#0072FF] hover:to-[#00C6FF] transition-all duration-200"
-                  onClick={() => setShowWalletModal(!showWalletModal)}
-                >
-                  {getShortAddress(publicKey.toBase58())}
-                </button>
-              ) : (
-                <WalletMultiButton 
-                  style={{
-                    background: 'linear-gradient(135deg, #00C6FF 0%, #0072FF 100%)',
-                    borderRadius: '9999px',
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    padding: '8px 20px',
-                    width: '100%',
-                    height: '40px',
-                    minHeight: '40px'
-                  }}
-                />
+              {mounted && (
+                <>
+                  {connected && publicKey ? (
+                    <button
+                      type="button"
+                      className="px-5 py-2 rounded-full text-sm font-medium border-2 border-[#00C6FF] text-[#0066FF] bg-gradient-to-r from-[#00C6FF] to-[#0072FF] text-white hover:from-[#0072FF] hover:to-[#00C6FF] transition-all duration-200"
+                      onClick={() => setShowWalletModal(!showWalletModal)}
+                    >
+                      {getShortAddress(publicKey.toBase58())}
+                    </button>
+                  ) : (
+                    <WalletMultiButton 
+                      style={{
+                        background: 'linear-gradient(135deg, #00C6FF 0%, #0072FF 100%)',
+                        borderRadius: '9999px',
+                        fontSize: '14px',
+                        fontWeight: '500',
+                        padding: '8px 20px',
+                        width: '100%',
+                        height: '40px',
+                        minHeight: '40px'
+                      }}
+                    />
+                  )}
+                </>
               )}
 
               {/* Get Started */}
@@ -178,7 +198,7 @@ const Navbar = () => {
       </div>
 
       {/* Wallet Popup */}
-      {showWalletModal && connected && publicKey && (
+      {mounted && showWalletModal && connected && publicKey && (
         <div className="absolute top-24 right-8 bg-white rounded-xl shadow-lg border border-gray-200 z-50">
           <div className="p-4 w-64 relative">
             <button
