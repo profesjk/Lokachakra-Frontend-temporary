@@ -37,12 +37,55 @@ const Navbar = () => {
     { label: 'Contact Us', href: '/contactus' },
   ];
 
-  const handleAuth = (step: number) => {
+  const handleAuth = async (step: number) => {
     if (!connected) {
       alert('Please connect your wallet first to get started!');
       return;
     }
+    
     setIsOpen(false);
+    
+    // Check for existing account when user clicks Get Started
+    if (step === 1 && publicKey) {
+      try {
+        console.log('🔍 Checking for existing account from navbar...');
+        
+        const response = await fetch('/api/check-user', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ walletAddress: publicKey.toBase58() }),
+        });
+        
+        if (response.ok) {
+          const result = await response.json();
+          if (result.exists && result.userData) {
+            console.log('✅ Existing user found, auto-logging in...');
+            
+            // Store user data in localStorage
+            const userData = {
+              ...result.userData,
+              walletAddress: publicKey.toBase58(),
+              autoLoginTimestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('lokachakra_user', JSON.stringify(userData));
+            
+            // Redirect directly to dashboard
+            router.push('/userdashboard');
+            return;
+          }
+        }
+        
+        console.log('ℹ️ No existing account found, proceeding to sign-up...');
+      } catch (error) {
+        console.error('❌ Error checking existing account:', error);
+        // Continue to sign-up page on error
+      }
+    }
+    
+    // If no existing account found or error occurred, proceed to auth page
     router.push(`/auth?step=${step}`);
   };
 

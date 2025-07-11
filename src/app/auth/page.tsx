@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -402,6 +402,11 @@ export default function Auth() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState('');
     const [submitSuccess, setSubmitSuccess] = useState(false);
+    
+    // Auto-login state
+    const [isCheckingExistingAccount, setIsCheckingExistingAccount] = useState(false);
+    const [existingUserData, setExistingUserData] = useState<any>(null);
+    const [showAutoLoginPrompt, setShowAutoLoginPrompt] = useState(false);
 
     // Form data handlers
     const handleFieldChange = (fieldName: string, value: string) => {
@@ -424,6 +429,79 @@ export default function Auth() {
         const missingFields = requiredFields.filter(field => !formData[field.name] || formData[field.name].trim() === '');
         return missingFields;
     };
+
+    // Function to check if user already exists on blockchain
+    const checkExistingAccount = async (walletAddress: string) => {
+        try {
+            setIsCheckingExistingAccount(true);
+            console.log('🔍 Checking for existing account:', walletAddress);
+            
+            const response = await fetch('/api/check-user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ walletAddress }),
+            });
+            
+            if (response.ok) {
+                const result = await response.json();
+                if (result.exists) {
+                    console.log('✅ Existing user found:', result.userData);
+                    setExistingUserData(result.userData);
+                    setShowAutoLoginPrompt(true);
+                    return result.userData;
+                }
+            }
+            
+            console.log('ℹ️ No existing account found for this wallet');
+            return null;
+        } catch (error) {
+            console.error('❌ Error checking existing account:', error);
+            return null;
+        } finally {
+            setIsCheckingExistingAccount(false);
+        }
+    };
+
+    // Auto-login function
+    const handleAutoLogin = async () => {
+        if (!existingUserData || !publicKey) return;
+        
+        try {
+            console.log('🚀 Auto-logging in user:', existingUserData);
+            
+            // Store user data in localStorage
+            const userData = {
+                ...existingUserData,
+                walletAddress: publicKey.toBase58(),
+                autoLoginTimestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('lokachakra_user', JSON.stringify(userData));
+            
+            // Redirect to dashboard
+            router.push('/userdashboard');
+        } catch (error) {
+            console.error('❌ Auto-login error:', error);
+            setSubmitError('Failed to auto-login. Please try manual sign-up.');
+        }
+    };
+
+    // Effect to check for existing account when wallet connects
+    useEffect(() => {
+        if (connected && publicKey && step === 1 && !existingUserData && !isCheckingExistingAccount) {
+            console.log('🔍 Wallet connected, checking for existing account...');
+            checkExistingAccount(publicKey.toBase58());
+        }
+        
+        // Reset states when wallet disconnects
+        if (!connected) {
+            setExistingUserData(null);
+            setShowAutoLoginPrompt(false);
+            setIsCheckingExistingAccount(false);
+        }
+    }, [connected, publicKey, step]);
 
     const handleSubmit = async () => {
         setIsSubmitting(true);
@@ -519,7 +597,22 @@ export default function Auth() {
         return <LeftSection />;
     }
 
-    const handleRoleSelection = () => {
+    const handleRoleSelection = async () => {
+        // If there's an existing user and auto-login prompt is shown, don't proceed
+        if (showAutoLoginPrompt && existingUserData) {
+            console.log('⚠️ Auto-login prompt is active, please choose an option first');
+            return;
+        }
+        
+        // If connected and no existing user found, check again before proceeding
+        if (connected && publicKey && !existingUserData && !isCheckingExistingAccount) {
+            const userData = await checkExistingAccount(publicKey.toBase58());
+            if (userData) {
+                // If user found during role selection, show prompt
+                return;
+            }
+        }
+        
         const config = roleConfig[role as keyof typeof roleConfig];
         if (config) {
             setStep(config.step);
@@ -571,12 +664,93 @@ export default function Auth() {
                             ))}
                         </div>
 
+                        {/* Auto-login prompt for existing users */}
+                        {showAutoLoginPrompt && existingUserData && (
+                            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg max-w-md mx-auto">
+                                <div className="flex items-center mb-3">
+                                    <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                    <span className="font-semibold text-green-800">Existing Account Found!</span>
+                                </div>
+                                <p className="text-sm text-green-700 mb-3">
+                                    We found an existing account linked to your wallet. Would you like to sign in automatically?
+                                </p>
+                                <div className="flex gap-2 justify-center">
+                                    <button
+                                        onClick={handleAutoLogin}
+                                        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm font-semibold"
+                                    >
+                                        Sign In Automatically
+                                    </button>
+                                    <button
+                                        onClick={() => setShowAutoLoginPrompt(false)}
+                                        className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition text-sm font-semibold"
+                                    >
+                                        Create New Account
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Wallet connection status */}
+                        {connected && publicKey && (
+                            <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg max-w-md mx-auto">
+                                <div className="flex items-center text-sm">
+                                    <svg className="w-4 h-4 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                    <span className="text-blue-700">
+                                        Wallet Connected: {publicKey.toBase58().slice(0, 8)}...{publicKey.toBase58().slice(-8)}
+                                    </span>
+                                </div>
+                                {isCheckingExistingAccount && (
+                                    <div className="mt-2 text-xs text-blue-600">
+                                        <div className="flex items-center">
+                                            <svg className="animate-spin h-3 w-3 mr-1" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            Checking for existing account...
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {!connected && (
+                            <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg max-w-md mx-auto">
+                                <div className="flex items-center text-sm text-yellow-700">
+                                    <svg className="w-4 h-4 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                    </svg>
+                                    Please connect your wallet to continue
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Manual check button for troubleshooting */}
+                        {connected && publicKey && !showAutoLoginPrompt && !isCheckingExistingAccount && (
+                            <div className="mb-4 text-center">
+                                <button
+                                    onClick={() => checkExistingAccount(publicKey.toBase58())}
+                                    className="text-sm text-blue-600 hover:text-blue-800 underline"
+                                >
+                                    Check for existing account again
+                                </button>
+                            </div>
+                        )}
+
                         <button
-                            className="px-7 py-2 bg-[#0066FF] text-white rounded-full hover:bg-white hover:text-[#0066FF] border-2 border-[#0066FF] transition duration-300 font-semibold"
-                            disabled={!role}
+                            className={`px-7 py-2 rounded-full border-2 transition duration-300 font-semibold ${
+                                connected && !showAutoLoginPrompt
+                                    ? "bg-[#0066FF] text-white border-[#0066FF] hover:bg-white hover:text-[#0066FF]"
+                                    : "bg-gray-400 text-gray-200 border-gray-400 cursor-not-allowed"
+                            }`}
+                            disabled={!role || !connected || showAutoLoginPrompt}
                             onClick={handleRoleSelection}
                         >
-                            CONTINUE
+                            {showAutoLoginPrompt ? 'CHOOSE ABOVE OPTION' : 'CONTINUE'}
                         </button>
 
                         <p className="text-sm text-gray-600 mt-4 text-center">

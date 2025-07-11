@@ -247,14 +247,72 @@ async function uploadDataToBlockchain(cid, userWalletPublicKey, role) {
             
             // For development, we'll need to airdrop some SOL to the keypair
             try {
-                console.log('💰 Requesting SOL airdrop for transaction fees...');
-                await connection.requestAirdrop(keypair.publicKey, 2 * LAMPORTS_PER_SOL);
-                // Wait a bit for the airdrop to complete
-                await new Promise(resolve => setTimeout(resolve, 3000));
-                console.log('✅ Airdrop completed');
+                console.log('💰 Checking balance and requesting SOL airdrop for transaction fees...');
+                
+                // Check current balance
+                const currentBalance = await connection.getBalance(keypair.publicKey);
+                console.log('💳 Current balance:', currentBalance / LAMPORTS_PER_SOL, 'SOL');
+                
+                if (currentBalance < 0.1 * LAMPORTS_PER_SOL) { // If less than 0.1 SOL
+                    console.log('💰 Requesting airdrop...');
+                    
+                    // Try multiple smaller airdrops if needed (devnet has rate limits)
+                    let totalAirdropped = 0;
+                    const targetAmount = 1 * LAMPORTS_PER_SOL; // 1 SOL should be enough
+                    
+                    while (totalAirdropped < targetAmount && totalAirdropped < 2 * LAMPORTS_PER_SOL) {
+                        try {
+                            const airdropAmount = Math.min(1 * LAMPORTS_PER_SOL, targetAmount - totalAirdropped);
+                            const airdropSignature = await connection.requestAirdrop(keypair.publicKey, airdropAmount);
+                            
+                            // Wait for airdrop confirmation with timeout
+                            console.log('⏳ Waiting for airdrop confirmation...');
+                            await Promise.race([
+                                connection.confirmTransaction(airdropSignature, 'confirmed'),
+                                new Promise((_, reject) => 
+                                    setTimeout(() => reject(new Error('Airdrop timeout')), 30000)
+                                )
+                            ]);
+                            
+                            totalAirdropped += airdropAmount;
+                            console.log('✅ Airdrop confirmed. Total airdropped:', totalAirdropped / LAMPORTS_PER_SOL, 'SOL');
+                            
+                            // Small delay to avoid rate limiting
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                        } catch (airdropError) {
+                            console.warn('❌ Individual airdrop failed:', airdropError.message);
+                            break;
+                        }
+                    }
+                    
+                    // Verify balance after airdrop
+                    const newBalance = await connection.getBalance(keypair.publicKey);
+                    console.log('✅ Airdrop process completed. New balance:', newBalance / LAMPORTS_PER_SOL, 'SOL');
+                } else {
+                    console.log('✅ Sufficient balance available');
+                }
             } catch (airdropError) {
-                console.warn("Airdrop failed:", airdropError);
-                // Continue anyway, user might already have some SOL
+                console.warn("❌ Airdrop failed:", airdropError);
+                
+                // Check if we have any balance at all
+                const finalBalance = await connection.getBalance(keypair.publicKey);
+                console.log('💳 Final balance check:', finalBalance / LAMPORTS_PER_SOL, 'SOL');
+                
+                if (finalBalance === 0) {
+                    throw new Error('Unable to fund account for transaction. Devnet faucet may be unavailable. Please try again in a few moments.');
+                }
+            }
+            
+            // Get estimated transaction fee
+            const estimatedFee = await transaction.getEstimatedFee(connection);
+            console.log('💸 Estimated transaction fee:', estimatedFee / LAMPORTS_PER_SOL, 'SOL');
+            
+            // Final balance check before transaction
+            const preTransactionBalance = await connection.getBalance(keypair.publicKey);
+            console.log('💳 Pre-transaction balance:', preTransactionBalance / LAMPORTS_PER_SOL, 'SOL');
+            
+            if (preTransactionBalance < estimatedFee) {
+                throw new Error('Insufficient balance for transaction fees. Please try again.');
             }
             
             // Sign and send transaction
@@ -265,7 +323,9 @@ async function uploadDataToBlockchain(cid, userWalletPublicKey, role) {
                 [keypair],
                 {
                     commitment: 'confirmed',
-                    maxRetries: 3,
+                    maxRetries: 5,
+                    preflightCommitment: 'confirmed',
+                    skipPreflight: false,
                 }
             );
             console.log('✅ Transaction confirmed with signature:', signature);
