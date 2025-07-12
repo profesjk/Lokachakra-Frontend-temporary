@@ -376,7 +376,8 @@ export async function POST(request) {
         // Validate wallet address
         try {
             new PublicKey(walletAddress);
-        } catch (error) {
+        } catch (walletError) {
+            console.error('Invalid wallet address format:', walletError.message);
             return NextResponse.json(
                 { success: false, error: 'Invalid wallet address' }, 
                 { status: 400 }

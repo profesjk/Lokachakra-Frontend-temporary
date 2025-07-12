@@ -7,6 +7,18 @@ import { useRouter } from 'next/navigation';
 import { useWallet } from '@solana/wallet-adapter-react';
 import ChatBot from '../sections/ChatBot';
 
+// Interface for user data
+interface UserData {
+    role: string;
+    roleType: string;
+    walletAddress: string;
+    profilePDA?: string;
+    signature?: string;
+    cid?: string;
+    formData: Record<string, string>;
+    signupTimestamp: string;
+}
+
 // Role configuration data
 const roleConfig = {
     founder: {
@@ -405,7 +417,7 @@ export default function Auth() {
     
     // Auto-login state
     const [isCheckingExistingAccount, setIsCheckingExistingAccount] = useState(false);
-    const [existingUserData, setExistingUserData] = useState<any>(null);
+    const [existingUserData, setExistingUserData] = useState<UserData | null>(null);
     const [showAutoLoginPrompt, setShowAutoLoginPrompt] = useState(false);
 
     // Form data handlers
@@ -501,7 +513,7 @@ export default function Auth() {
             setShowAutoLoginPrompt(false);
             setIsCheckingExistingAccount(false);
         }
-    }, [connected, publicKey, step]);
+    }, [connected, publicKey, step, existingUserData, isCheckingExistingAccount]);
 
     const handleSubmit = async () => {
         setIsSubmitting(true);

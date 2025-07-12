@@ -60,7 +60,8 @@ export async function POST(request) {
         let userPublicKey;
         try {
             userPublicKey = new PublicKey(walletAddress);
-        } catch (error) {
+        } catch (walletError) {
+            console.error('Invalid wallet address format:', walletError.message);
             return NextResponse.json(
                 { success: false, error: 'Invalid wallet address' }, 
                 { status: 400 }
@@ -146,7 +147,7 @@ export async function POST(request) {
                         profilePDA = accounts[1].toString(); // Typically the second account is the PDA
                     }
                 } catch (pdaError) {
-                    console.warn('Could not extract PDA from transaction');
+                    console.warn('Could not extract PDA from transaction:', pdaError.message);
                 }
                 
                 // Create user data structure with real data where available
