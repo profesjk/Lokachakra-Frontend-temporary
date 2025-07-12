@@ -22,7 +22,7 @@ const RPC_ENDPOINTS = [
 
 // Try multiple connections until one works
 let connection;
-let currentEndpointIndex = 0;
+// let currentEndpointIndex = 0;
 
 async function getWorkingConnection() {
     for (let i = 0; i < RPC_ENDPOINTS.length; i++) {

@@ -877,7 +877,7 @@ export default function Auth() {
                                         </p>
                                     ) : (
                                         <p className="mt-1 text-xs">
-                                            Please connect your Solana wallet to complete sign-up. Click the "Connect Wallet" button in the navigation bar.
+                                            Please connect your Solana wallet to complete sign-up. Click the &quot;Connect Wallet&quot; button in the navigation bar.
                                         </p>
                                     )}
                                 </div>
